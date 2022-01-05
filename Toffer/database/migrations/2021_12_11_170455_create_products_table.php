@@ -23,10 +23,12 @@ class CreateProductsTable extends Migration
             $table->uuid('uuid')->change();
             $table->string('name');
             $table->string('image')->nullable();
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->double('price', 10,2);
             $table->string("type");
+            $table->string("status")->default("ativo");
             $table->double('qtd');
+            $table->text('observacao')->nullable();
             $table->timestamps();
         });
     }

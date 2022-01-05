@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\SiteController;
+use App\Http\Controllers\{
+    SiteController,
+    DashboardController,
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +21,7 @@ use App\Http\Controllers\SiteController;
 Route::get('/', [SiteController::class,'index'])->name('index');
 Route::get('/show', [SiteController::class,'show'])->name('show');
 Route::get('/cart', [SiteController::class,'cart'])->name('cart');
+
+Auth::routes();
+
+Route::get('/home', [DashboardController::class, 'index'])->name('home');

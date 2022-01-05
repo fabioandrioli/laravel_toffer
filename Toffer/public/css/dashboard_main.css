@@ -1,0 +1,8 @@
+main{
+    display:flex;
+    justify-content:center;
+}
+
+.dashboard{
+    max-width:1280px;
+}

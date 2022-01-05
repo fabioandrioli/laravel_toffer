@@ -22,6 +22,7 @@ class CreateSubCategoriesTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
             $table->string('image')->nullable();
             $table->text('description');
+            $table->string("status")->default("ativo");
             $table->timestamps();
         });
     }

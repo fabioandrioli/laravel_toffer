@@ -26,7 +26,11 @@
                     <h1><a class="menu__logo" href="{{route('index')}}">TOFFER</a></h1>
 
                     <ul>
-                        <li><p  class="menu__item">Olá, Seja bem vindo!</p></li>
+                        @guest
+                            <li><p  class="menu__item">Olá, Seja bem vindo!</p></li>
+                         @else
+                            <li><p  class="menu__item">Olá, {{ explode(' ',trim(Auth::user()->name))[0] }} Seja bem vindo!</p></li>
+                        @endguest
                     </ul>
                     <form class="menu__search">
                         <input class="menu__input" type="text" placeholder="Buscar produto"/>
@@ -37,10 +41,26 @@
                         <li> <a class="menu__item cart" href="{{route('cart')}}"><p>(0)<br>carrinho</p></a></li>
                     </ul>
                     <ul class="menu__access">
-                        <li> <i style="color:white" class="icone_login fas fa-user fa-2x"></i></li>
-                        <li> <a class="menu__item" href="#">Login</a></li>
-                        <li> <a class="menu__item piper">|</a></li>
-                        <li> <a class="menu__item" href="#">inscrever - se</a></li>
+                        @guest
+                            <li> <i style="color:white" class="icone_login fas fa-user fa-2x"></i></li>
+                            <li> <a class="menu__item" href="{{ route('login') }}">Login</a></li>
+                            <li> <a class="menu__item piper">|</a></li>
+                            <li> <a class="menu__item" href="{{ route('register') }}">inscrever - se</a></li>
+                        @else
+                            <li> <i style="color:white" class="icone_login fas fa-user fa-2x"></i></li>
+                            <li> <a class="menu__item" href="{{ route('login') }}"> {{ explode(' ',trim(Auth::user()->name))[0] }}</a></li>
+                            <li> <a class="menu__item piper">|</a></li>
+                            <li> 
+                                <a class="menu__item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                    {{ __('Sair') }}
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </li>
+                        @endguest
                     </ul>
                 </div>
             </nav><!-- Navbar - menu-->
