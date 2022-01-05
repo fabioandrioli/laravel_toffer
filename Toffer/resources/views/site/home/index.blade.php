@@ -57,7 +57,7 @@
         <div class="container__toffer product_display">
             
             <figure class="product__card">
-                <a href="#">
+                <a href="{{route('show')}}">
                     <img class="card__image" src="./image/produto/relogio_3.jpg" alt="Relógio de couro" srcset="">
                     <div class="card_body">
                         <p class="card_title">Lige 2021 novo relógio intelige...</p>
@@ -70,7 +70,7 @@
             </figure>
 
             <figure class="product__card">
-                <a href="#">
+                <a href="{{route('show')}}">
                     <img class="card__image" src="./image/produto/relogio_3.jpg" alt="Relógio de couro" srcset="">
                     <div class="card_body">
                         <p class="card_title">Lige 2021 novo relógio intelige...</p>
@@ -83,7 +83,7 @@
             </figure>
             
             <figure class="product__card">
-                <a href="#">
+                <a href="{{route('show')}}">
                     <img class="card__image" src="./image/produto/relogio_3.jpg" alt="Relógio de couro" srcset="">
                     <div class="card_body">
                         <p class="card_title">Lige 2021 novo relógio intelige...</p>
@@ -96,7 +96,7 @@
             </figure>
 
             <figure class="product__card">
-                <a href="#">
+                <a href="{{route('show')}}">
                     <img class="card__image" src="./image/produto/relogio_3.jpg" alt="Relógio de couro" srcset="">
                     <div class="card_body">
                         <p class="card_title">Lige 2021 novo relógio intelige...</p>
@@ -109,7 +109,7 @@
             </figure>
 
             <figure class="product__card">
-                <a href="#">
+                <a href="{{route('show')}}">
                     <img class="card__image" src="./image/produto/relogio_3.jpg" alt="Relógio de couro" srcset="">
                     <div class="card_body">
                         <p class="card_title">Lige 2021 novo relógio intelige...</p>
@@ -122,7 +122,7 @@
             </figure>
 
             <figure class="product__card">
-                <a href="#">
+                <a href="{{route('show')}}">
                     <img class="card__image" src="./image/produto/relogio_3.jpg" alt="Relógio de couro" srcset="">
                     <div class="card_body">
                         <p class="card_title">Lige 2021 novo relógio intelige...</p>
@@ -135,7 +135,7 @@
             </figure>
 
             <figure class="product__card">
-                <a href="#">
+                <a href="{{route('show')}}">
                     <img class="card__image" src="./image/produto/relogio_3.jpg" alt="Relógio de couro" srcset="">
                     <div class="card_body">
                         <p class="card_title">Lige 2021 novo relógio intelige...</p>

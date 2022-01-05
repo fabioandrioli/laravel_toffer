@@ -192,6 +192,10 @@ hr{
     flex-wrap: wrap;
 }
 
+.especificacoes .table-responsive{
+    width: 100%!important;
+}
+
 .especificacoes h3{
     margin-right: auto;
     width: 100%;
@@ -399,4 +403,22 @@ hr{
         margin: 0 auto;
     }
 
+}
+
+.mercadopago-button{
+    text-decoration: none;
+    width: 250px;
+    background:#FFA41C!important;
+    text-decoration: none!important;
+    color: #000!important;
+    padding:10px!important;
+    margin-bottom: 10px!important;
+    width:250px!important;
+    text-align:center!important;
+    border-radius: 11px!important;
+    -webkit-border-radius: 11px!important;
+    -moz-border-radius: 11px!important;
+    -ms-border-radius: 11px!important;
+    -o-border-radius: 11px!important;
+    line-height: 2!important;
 }

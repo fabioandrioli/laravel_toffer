@@ -101,7 +101,7 @@
                   },
                   render: {
                         container: '.cho-container', // Indique o nome da class onde será exibido o botão de pagamento
-                        label: 'Pagar', // Muda o texto do botão de pagamento (opcional)
+                        label: 'Fechar pedido', // Muda o texto do botão de pagamento (opcional)
                   }
             });
             </script>

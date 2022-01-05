@@ -177,3 +177,19 @@ hr{
     display:flex;
     align-items:center;
 }
+
+.mercadopago-button{
+    background:#FFD814!important;
+    text-decoration: none!important;
+    color: #000!important;
+    padding:10px!important;
+    margin-bottom: 10px!important;
+    width:250px!important;
+    text-align:center!important;
+    border-radius: 11px!important;
+    -webkit-border-radius: 11px!important;
+    -moz-border-radius: 11px!important;
+    -ms-border-radius: 11px!important;
+    -o-border-radius: 11px!important;
+    box-shadow: 2px 2px 2px black!important;
+}
