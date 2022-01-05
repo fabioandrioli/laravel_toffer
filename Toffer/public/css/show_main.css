@@ -1,0 +1,402 @@
+main{
+    display:flex;
+    justify-content:center;
+}
+
+.container-show{
+    max-width: 1280px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-product-description{
+    margin-top:20px;
+    display:grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 15px;
+}
+
+.galeria{
+    width: 100%;
+}
+
+.title__mobile{
+    display: none;
+}
+
+.observacao{
+    margin-top:10px;
+}
+
+.card-image{
+    width: 340px;
+    height:295px;
+}
+
+.sub__card{
+    margin-top: 10px;
+    padding:0 10px;
+    display:grid;
+    grid-template-rows: 1fr;
+    grid-template-columns:1fr 1fr 1fr;
+    column-gap: 10px;
+}
+
+.mobile-image{
+    display:none;
+}
+
+.sub-card-image{
+    width: 82px;
+    height:74px;
+    justify-self:center;
+}
+
+.sub-card-image.active{
+    box-shadow: 5px 5px #575757;
+}
+
+.description__title{
+    font-size:28px;
+    font-weight:600;
+}
+
+.description__text{
+    width: 452px;
+    font-size: 25px;
+    color: #565959;
+}
+
+.card-action{
+    width:297px;
+    border: 1px solid black;
+    padding:15px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.card-action h4{
+    font-size:25px;
+}
+
+.text__price{
+    font-size: 25px;
+}
+
+.text__price span{
+    font-size:15px;
+    position:relative;
+    top:-15px;
+}
+
+.promo{
+    font-size:18px!important;
+    position:relative;
+    top:5px!important;
+    text-decoration: line-through;
+    color:#666666;
+}
+
+.card-desconto{
+    padding:2px;
+    height: 29px;
+    font-weight: bold;
+    background-color:#E47911;
+    width:121px;
+    font-size:14px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.card-desconto p{
+  margin: auto 0;
+  color:#ffffff;
+}
+
+.buttons{
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+}
+
+.add__cart, .buy__now{
+    text-decoration: none;
+    color:#000;
+    padding:10px;
+    margin-bottom: 10px;
+    width:250px;
+    text-align:center;
+    border-radius: 11px;
+    -webkit-border-radius: 11px;
+    -moz-border-radius: 11px;
+    -ms-border-radius: 11px;
+    -o-border-radius: 11px;
+}
+
+.add__cart{
+    background:#FFD814;
+}
+
+.add__cart:hover{
+    color:#000;
+    background:#fae26d;
+}
+
+.buy__now{
+    background: #FFA41C;
+    margin-bottom: 20px;
+}
+
+.buy__now:hover{
+    color:#000;
+    background: #ffb444;
+}
+
+.text_frete{
+    font-weight: 700;
+}
+
+.observacao_text{
+    margin-top: 20px;
+    font-size: 18px!important;
+}
+
+.forma_de_pagamento{
+    width: 600px;
+}
+
+.card-action .forma_de_pagamento{
+    width: 100%;
+}
+
+.perguntas{
+    margin-top: 30px;
+    width: 100%;
+}
+
+hr{
+    border: 1px solid;
+}
+
+.especificacoes{
+    display:flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.especificacoes h3{
+    margin-right: auto;
+    width: 100%;
+}
+
+.table td, .table th {
+    font-size:24px;
+}
+
+
+@media screen and (max-width: 1024px){
+
+    .container-product-description{
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto;
+    }
+
+    .galeria{
+        justify-self: center;
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content:center;
+    }
+
+    .galeria h5.observacao{
+        padding: 0 15px;
+    }
+
+    .title__mobile{
+        display: inline;
+        font-size:28px;
+        margin-bottom: 5px;
+        font-weight: 600;
+        padding: 0 15px;
+    }
+
+    .card-image{
+        display:none;
+    }
+
+    .mobile-image{
+        display:block;
+    }
+
+    .sub__card{
+        display: none;
+    }
+
+    .description{
+        grid-row: 3/3;
+        padding: 0 20px;
+    }
+
+    .description .text__price{
+        display: none;
+    }
+
+    .description .card-desconto{
+        display:none;
+    }
+
+    .description hr{
+        display:none;
+    }
+
+    .description h4{
+        display: none;
+    }
+
+    .description .forma_de_pagamento{
+        display: none;
+    }
+
+    .card-action{
+        grid-row:2/2;
+        justify-self:center;
+        width: 100%;
+        border: none;
+    }
+
+    .text__price{
+        font-size: 70px!important;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 0px;
+    }
+
+    .text__price span{
+        top:0px;
+        font-size:25px
+    }
+
+    .promo {
+        font-size:30px!important;
+        top:40px!important;
+        margin-bottom: 60px;
+    }
+
+    .add__cart,.buy__now{
+        width: 100%;
+        font-size:22px;
+        font-weight: 600;
+    }
+
+    .description__text{
+        width: 100%;
+    }
+
+    .perguntas{
+        padding:0 20px;
+    }
+
+    .btn-mobile{
+        font-size:23px;
+    }
+
+    .especificacoes{
+        padding:0 20px;
+    }
+}
+
+
+@media screen and (max-width: 700px){
+    .product_display{
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows:auto;
+        margin: 0 auto;
+    }
+
+    .product__card{
+        justify-self:center;
+    }
+}
+
+
+@media screen and (max-width: 693px){
+
+    .information__container{
+       flex-direction: column;
+    }
+
+    .information__card{
+        margin-bottom:100px;
+    }
+
+    
+
+    .container-img-reembolso img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .product_display{
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows:auto;
+        margin: 0 auto;
+    }
+
+    .product__card{
+        justify-self:center;
+    }
+
+}
+
+
+@media screen and (max-width: 400px){
+
+    .information__container{
+        flex-direction: row;
+    }
+
+    .information__card{
+        margin-bottom:0px;
+    }
+
+    .information__card h3{
+        font-size:11px;
+    }
+
+    .container-img-reembolso img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .product_display{
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows:auto;
+        margin: 0 auto;
+    }
+
+    .product__card{
+        justify-self:center;
+    }
+
+    .product_display{
+        display:grid;
+        grid-template-columns: 1fr;
+        grid-template-rows:auto;
+        margin: 0 auto;
+    }
+
+}
