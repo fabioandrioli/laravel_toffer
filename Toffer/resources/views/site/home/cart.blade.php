@@ -93,27 +93,33 @@
                </div>
                
             </div>
-            <div class="buttons cho-container"></div>
+             <div class="buttons cho-container">
+                <a href="#" class="mercadopago-button"  onclick="@if(Auth::check()) checkout.open() @else redirect() @endif">Fechar pedido</a>
+             </div>
+           
+
         </div>
     </section>
 </main>
 @endsection
-@push('scripts')
-    <script>
-        // Adicione as credenciais do SDK
-        const mp = new MercadoPago("{{config('services.mercadopago.key')}}", {
-                locale: 'pt-BR'
-        });
-        
-        // Inicialize o checkout
-        mp.checkout({
-            preference: {
-                id: '{{ $preference->id }}'
-            },
-            render: {
-                    container: '.cho-container', // Indique o nome da class onde será exibido o botão de pagamento
-                    label: 'Fechar pedido', // Muda o texto do botão de pagamento (opcional)
+
+    @push('scripts')
+        <script>
+            // Adicione as credenciais do SDK
+            const mp = new MercadoPago("{{config('services.mercadopago.key')}}", {
+                    locale: 'pt-BR'
+            });
+            
+            // Inicialize o checkout
+            const checkout = mp.checkout({
+                preference: {
+                    id: '{{ $preference->id }}'
+                },
+            });
+
+            function redirect(){
+                window.location.href = "{{route('login')}}";
             }
-        });
-    </script>
-@endpush
+        </script>
+    @endpush
+

@@ -75,12 +75,13 @@
                 <h4 class="text__price">
                     <span>R$</span> 
                     131 
-                    <span>00</span>
+                   <span>00</span>
                     <span class="promo">R$ 820,10</span>
                 </h4>
                 <h4>Entrega em até 3 horas</h4>
-                <div class="buttons cho-container">
+                <div class="buttons">
                     <a href="#" class="add__cart">Adicionar ao carrinho</a>
+                    <a href="#" class="mercadopago-button"  onclick="@if(Auth::check()) checkout.open() @else redirect() @endif">Comprar agora</a>
                 </div>
                 <h4 class="text_frete">Frete grátis</h4>
                 <h4 class="observacao_text">**Entrega apenas no litoral</h4>
@@ -124,21 +125,21 @@
 
 @endsection
 @push('scripts')
-    <script>
-        // Adicione as credenciais do SDK
-        const mp = new MercadoPago("{{config('services.mercadopago.key')}}", {
-                locale: 'pt-BR'
-        });
-        
-        // Inicialize o checkout
-        mp.checkout({
-            preference: {
-                id: '{{ $preference->id }}'
-            },
-            render: {
-                    container: '.cho-container', // Indique o nome da class onde será exibido o botão de pagamento
-                    label: 'Comprar agora', // Muda o texto do botão de pagamento (opcional)
-            }
-        });
-    </script>
+<script>
+    // Adicione as credenciais do SDK
+    const mp = new MercadoPago("{{config('services.mercadopago.key')}}", {
+            locale: 'pt-BR'
+    });
+    
+    // Inicialize o checkout
+    const checkout = mp.checkout({
+        preference: {
+            id: '{{ $preference->id }}'
+        },
+    });
+
+    function redirect(){
+        window.location.href = "{{route('login')}}";
+    }
+</script>
 @endpush

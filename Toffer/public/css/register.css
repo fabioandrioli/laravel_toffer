@@ -1,0 +1,22 @@
+.inputs{
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.register__text{
+    font-size: 22px;
+    font-weight:600;
+    margin-bottom: 10px;
+}
+
+.card__header--toffer{
+    color: #fff;
+    background:#376295;
+    font-weight: bold;
+}
+
+.btn__toffer{
+    font-size:24px;
+    font-weight:600;
+    background-color:#376295;
+}
