@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     SiteController,
     DashboardController,
+    UserController,
 };
 
 /*
@@ -25,3 +26,10 @@ Route::get('/cart', [SiteController::class,'cart'])->name('cart');
 Auth::routes();
 
 Route::get('/home', [DashboardController::class, 'index'])->name('home');
+Route::get('/clients', [DashboardController::class, 'clients'])->name('clients');
+
+Route::get('/detail/{id}', [UserController::class, 'detail'])->name('detail');
+
+Route::get('/welcome',function(){
+    return view('auth.registerTowTest');
+});
