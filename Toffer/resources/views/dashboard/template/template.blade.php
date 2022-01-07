@@ -13,7 +13,7 @@
                 <hr>
                 <li><a href="#"><i class="fas fa-boxes fa-2x"></i> Pedidos</a></li>
                 <hr>
-                <li><a href="#"><i class="fas fa-box fa-2x"></i> Produtos</a></li>
+                <li><a href="{{route('product')}}"><i class="fas fa-box fa-2x"></i> Produtos</a></li>
                 <hr>
                 <li><a href="#"><i class="fas fa-th fa-2x"></i> Categorias</a></li>
                 <hr>

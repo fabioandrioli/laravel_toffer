@@ -29,6 +29,7 @@ class CreateProductsTable extends Migration
             $table->string("type");
             $table->string("status")->default("ativo");
             $table->double('qtd');
+            $table->double('desconto')->nullable();
             $table->text('observacao')->nullable();
             $table->timestamps();
         });

@@ -94,5 +94,6 @@
     <script src="js/menu.js"></script>
     <script src="https://sdk.mercadopago.com/js/v2"></script>
     @stack('scripts')
+    @stack('tinymce')
     
 </html>

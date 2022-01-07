@@ -7,6 +7,7 @@ use App\Http\Controllers\{
     DashboardController,
     UserController,
     ClientController,
+    ProductController,
 };
 
 /*
@@ -49,6 +50,10 @@ Route::get('/detail/{id}', [UserController::class, 'detail'])->name('detail');
 Route::get('/welcome',function(){
     return view('auth.registerTowTest');
 });
+
+
+Route::get("/product", [ProductController::class, 'index'])->name('product');
+Route::get("/product-create", [ProductController::class, 'create'])->name('product.create');
 
 // Authentication Routes...
 // Route::get('login', [

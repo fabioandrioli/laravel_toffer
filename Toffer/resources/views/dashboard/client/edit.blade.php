@@ -32,7 +32,7 @@
                                 <button type="submit" class="btn btn-primary btn__toffer">
                                     {{ __('Salvar') }}
                                 </button>
-                                <a class="btn btn-info" href="{{>route('dataClient')}}">voltar</a>
+                                <a class="btn btn-info btn__toffer" style="color:white;" href="{{route('dataClient')}}">voltar</a>
                             </div>
                         </div>
                     </form>

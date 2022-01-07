@@ -108,3 +108,52 @@ main{
 .dashboard__body .modal-content{
     padding:20px;
 }
+
+.product__card{
+    width:100%;
+    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.product__card img{
+    width:250px;
+}
+
+.product__card .content{
+    width:calc(100% - 265px);
+    margin-left: 15px;
+}
+
+.product__card .product_action{
+    width:100%;
+    display: flex;
+    justify-content:flex-end;
+}
+
+.product__card .product_action a{
+    margin:0 10px;
+}
+
+.information{
+    width:100%;
+    margin-top:10px;
+}
+
+.image-preview{
+    margin:20px 0;
+}
+
+.input_image{
+   margin-bottom:20px;
+}
+
+.inputs{
+    margin: 50px 0;
+}
+
+.inputs label{
+    font-size:22px;
+}
+
