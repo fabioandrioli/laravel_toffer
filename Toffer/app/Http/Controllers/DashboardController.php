@@ -15,4 +15,5 @@ class DashboardController extends Controller
         $users = User::all();
         return view("dashboard.user.index",compact("users"));
     }
+
 }

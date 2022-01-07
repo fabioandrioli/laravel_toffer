@@ -19,10 +19,13 @@ class CreateAddressesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('street_name');
             $table->string('street_number');
+            $table->string('complement');
+            $table->string('reference');
+            $table->string('fachada');
             $table->string('zip_code')->nullable();
             $table->string('district');
-            $table->string('state');
-            $table->string('city');
+            $table->string('state')->nullable();
+            $table->string('city')->nullable();
             $table->timestamps();
         });
     }

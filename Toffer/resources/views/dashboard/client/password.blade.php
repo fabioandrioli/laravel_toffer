@@ -7,26 +7,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card card-info">
-                <div class="card-header card__header--toffer">{{ __('Cadastre-se') }}</div>
+                <div class="card-header card__header--toffer">{{ __('Alterar senha') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('updatePassword') }}">
                         @csrf
-
-                       <div class="inputs">
-                        <label for="name" class="register__text">Nome Completo</label>
-                        <input id="name" type="text" placeholder="Nome completo" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                       </div>
-
-                       <div class="inputs">
-                        <label for="email" class="register__text">Email</label>
-                        <input id="email" type="text" placeholder="Email" class="form-control @error('name') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                       </div>
-
-                       <div class="inputs">
-                        <label for="telefone" class="register__text">Telefone</label>
-                        <input id="telefone" name="phone" type="number" placeholder="Apenas número" class="form-control @error('phone') is-invalid @enderror" name="phone" value="84002449" required autocomplete="phone" autofocus>
-                       </div>
 
                        <div class="inputs">
                         <label for="password" class="register__text">Senha</label>
@@ -41,8 +26,9 @@
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary btn__toffer">
-                                    {{ __('Cadastrar-se') }}
+                                    {{ __('Salvar') }}
                                 </button>
+                                <a class="btn btn-info" href="{{>route('dataClient')}}">voltar</a>
                             </div>
                         </div>
                     </form>

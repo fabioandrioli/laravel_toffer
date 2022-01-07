@@ -125,4 +125,15 @@ class SiteController extends Controller
         return view("site.home.address");
     }
 
+    public function saveAddressUser(Request $request){
+        if(Auth::check()){
+            $user = Auth::user();
+            $data = $request->all();
+            $data['state'] = "Paraná";
+            $user->address()->create($data);
+            return redirect()->route("cart");
+        }
+                
+    }
+
 }

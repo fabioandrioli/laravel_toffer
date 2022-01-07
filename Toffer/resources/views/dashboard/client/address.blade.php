@@ -8,50 +8,48 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
 
-                <h3>Antes você deve completar seus dados</h3>
-
                 <div class="card card-info">
-                    <div class="card-header card__header--toffer">{{ __('Endereço para entrega') }}</div>
+                    <div class="card-header card__header--toffer">{{ __('Editar Endereço de Entrega') }}</div>
     
                     <div class="card-body">
-                        <form method="POST" action="{{ route('saveAddressUser') }}">
+                        <form method="POST" action="{{ route('updateAddress') }}">
                             @csrf
     
                            <div class="inputs input--street">
                                 <div class="street">
                                     <label for="rua" class="register__text">Rua</label>
-                                    <input id="rua" type="text" placeholder="Nome da rua" class="form-control" name="street_name" value="Odalicio Freitas Gabriel" required autocomplete="street_name" autofocus>
+                                    <input id="rua" type="text" placeholder="Nome da rua" class="form-control" name="street_name" value="{{$user->address->street_name}}" required autocomplete="street_name" autofocus>
                                 </div>
                                 <div class="number">
                                     <label for="number" class="register__text">Número</label>
-                                    <input id="number" type="number" placeholder="numero" class="form-control" name="street_number" value="92" required autocomplete="street_number" autofocus>
+                                    <input id="number" type="number" placeholder="numero" class="form-control" name="street_number" value="{{$user->address->street_number}}" required autocomplete="street_number" autofocus>
                                 </div>
                            </div>
     
                            
                            <div class="inputs">
                             <label for="cep" class="register__text">CEP</label>
-                            <input id="cep" type="number" placeholder="CEP - apenas números" class="form-control" name="zip_code" value="8209190" required autocomplete="zip_code" autofocus>
+                            <input id="cep" type="number" placeholder="CEP - apenas números" class="form-control" name="zip_code" value="{{$user->address->zip_code}}" required autocomplete="zip_code" autofocus>
                            </div>
 
                            <div class="inputs">
                             <label for="bairro" class="register__text">Bairro</label>
-                            <input id="bairro" type="text" placeholder="Nome do bairro" class="form-control" name="district" value="São Vicente" required autocomplete="district" autofocus>
+                            <input id="bairro" type="text" placeholder="Nome do bairro" class="form-control" name="district" value="{{$user->address->district}}" required autocomplete="district" autofocus>
                            </div>
 
                            <div class="inputs">
                             <label for="bairro" class="register__text">Complemento</label>
-                            <input id="bairro" type="text" placeholder="Casa, Apartament, etc" class="form-control" name="complement" value="Casa" required autocomplete="district" autofocus>
+                            <input id="bairro" type="text" placeholder="Casa, Apartament, etc" class="form-control" name="complement" value="{{$user->address->complement}}" required autocomplete="district" autofocus>
                            </div>
                            
                            <div class="inputs">
                             <label for="bairro" class="register__text">Rerefência</label>
-                            <input id="bairro" type="text" placeholder="Próximo à" class="form-control" name="reference" value="Próximo a padaria taynara" required autocomplete="district" autofocus>
+                            <input id="bairro" type="text" placeholder="Próximo à" class="form-control" name="reference" value="{{$user->address->reference}}" required autocomplete="district" autofocus>
                            </div>
 
                            <div class="inputs">
                             <label for="bairro" class="register__text">Descrição da fachada</label>
-                            <input id="bairro" type="text" placeholder="Descreva a frente do seu local de entrega" class="form-control" name="fachada" value="Casa com portão marrom" required autocomplete="district" autofocus>
+                            <input id="bairro" type="text" placeholder="Descreva a frente do seu local de entrega" class="form-control" name="fachada" value="{{$user->address->fachada}}" required autocomplete="district" autofocus>
                            </div>
 
                            <div class="inputs">
@@ -75,8 +73,9 @@
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary btn__toffer">
-                                        {{ __('Cadastrar-se') }}
+                                        {{ __('Salvar') }}
                                     </button>
+                                    <a class="btn btn-info" href="{{>route('dataClient')}}">voltar</a>
                                 </div>
                             </div>
                         </form>

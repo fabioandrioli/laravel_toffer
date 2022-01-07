@@ -94,7 +94,7 @@
                
             </div>
              <div class="buttons cho-container">
-                <a href="#" class="mercadopago-button"  onclick="@if(Auth::check()) checkout.open() @else redirect() @endif">Fechar pedido</a>
+                <a href="#" class="mercadopago-button"  onclick="@if(Auth::check()) @if(Auth::user()->address)  checkout.open() @else redirectAddress() @endif @else redirect() @endif">Fechar pedido</a>
              </div>
            
 
@@ -104,22 +104,29 @@
 @endsection
 
     @push('scripts')
-        <script>
-            // Adicione as credenciais do SDK
-            const mp = new MercadoPago("{{config('services.mercadopago.key')}}", {
-                    locale: 'pt-BR'
-            });
-            
-            // Inicialize o checkout
-            const checkout = mp.checkout({
-                preference: {
-                    id: '{{ $preference->id }}'
-                },
-            });
+    <script>
 
-            function redirect(){
-                window.location.href = "{{route('login')}}";
-            }
-        </script>
+
+        // Adicione as credenciais do SDK
+        const mp = new MercadoPago("{{config('services.mercadopago.key')}}", {
+                locale: 'pt-BR'
+        });
+        
+        // Inicialize o checkout
+        const checkout = mp.checkout({
+            preference: {
+                id: '{{ $preference->id }}'
+            },
+        });
+    
+        function redirect(){
+          window.location.href = "{{route('login')}}";
+        }
+    
+        function redirectAddress(){
+          window.location.href = "{{route('address')}}";
+        }
+    
+    </script>
     @endpush
 

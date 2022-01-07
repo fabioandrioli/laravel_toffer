@@ -7,6 +7,8 @@
     <div class="dashboard">
         <div class="menu-lateral">
             <ul>
+                <li> <a href="{{route('dataClient')}}"><i class="fas fa-digital-tachograph fa-2x"></i>Meus Dados</a></li>
+                <hr>
                 <li> <a href="{{route('clients')}}"><i class="fa fa-user fa-2x"></i> Clientes</a></li>
                 <hr>
                 <li><a href="#"><i class="fas fa-boxes fa-2x"></i> Pedidos</a></li>
