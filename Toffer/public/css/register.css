@@ -19,3 +19,16 @@
     font-weight:600;
     background-color:#376295;
 }
+
+.input--street{
+    display:flex;
+}
+
+.street{
+    width:70%;
+    margin-right: 10px;
+}
+
+.number{
+    width:30%;
+}

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
 
 use  MercadoPago\SDK;
 use MercadoPago;
@@ -39,12 +40,30 @@ class SiteController extends Controller
         // $preference->save();
 
         //return view('checkout.index',compact('preference'));
-        return view('site.home.index');
+        // if( Auth::check()){
+        //     $user = Auth::user();
+        //     // dd( Auth::user()->address);
+        //     // if($user->address == null){
+        //     //     echo "sim";
+        //     // }else{
+        //     //     echo false;
+        //     // }
+        // }
+        
+       return view('site.home.index');
     }
 
     public function show(){
+
+        $hasAddress = 0;
+        if(Auth::check()){
+            $user = Auth::user();
+            if($user->address != null)
+                $hasAddress = true;
+        }
+
         $preference = $this->mercadoPago();
-        return view('site.home.show',compact('preference'));
+        return view('site.home.show',compact('preference','hasAddress'));
     }
 
     public function cart(){
@@ -92,6 +111,18 @@ class SiteController extends Controller
         $response = Http::get( 'https://api.mercadopago.com/v1/payments/1245244885'."?access_token=TEST-2888179626589580-121516-ba62988dfe4948306686c7796d7f1774-1040022616");
 
         return $response;
+    }
+
+    public function redirectUser(){
+        if(Auth::user()->role == "cliente"){
+            return redirect()->route("index");
+        }else{
+            return redirect()->route("clients");
+        }
+    }
+
+    public function address(){
+        return view("site.home.address");
     }
 
 }

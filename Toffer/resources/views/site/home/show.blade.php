@@ -81,7 +81,7 @@
                 <h4>Entrega em até 3 horas</h4>
                 <div class="buttons">
                     <a href="#" class="add__cart">Adicionar ao carrinho</a>
-                    <a href="#" class="mercadopago-button"  onclick="@if(Auth::check()) checkout.open() @else redirect() @endif">Comprar agora</a>
+                    <a href="#" class="mercadopago-button"  onclick="@if(Auth::check()) @if(Auth::user()->address)  checkout.open() @else redirectAddress() @endif @else redirect() @endif">Comprar agora</a>
                 </div>
                 <h4 class="text_frete">Frete grátis</h4>
                 <h4 class="observacao_text">**Entrega apenas no litoral</h4>
@@ -126,6 +126,8 @@
 @endsection
 @push('scripts')
 <script>
+
+
     // Adicione as credenciais do SDK
     const mp = new MercadoPago("{{config('services.mercadopago.key')}}", {
             locale: 'pt-BR'
@@ -139,7 +141,12 @@
     });
 
     function redirect(){
-        window.location.href = "{{route('login')}}";
+      window.location.href = "{{route('login')}}";
     }
+
+    function redirectAddress(){
+      window.location.href = "{{route('address')}}";
+    }
+
 </script>
 @endpush

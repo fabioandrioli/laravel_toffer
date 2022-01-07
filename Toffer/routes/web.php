@@ -23,6 +23,8 @@ Route::get('/', [SiteController::class,'index'])->name('index');
 Route::get('/show', [SiteController::class,'show'])->name('show');
 Route::get('/cart', [SiteController::class,'cart'])->name('cart');
 Route::get('/success', [SiteController::class,'success'])->name('success');
+Route::get('/redirect_user', [SiteController::class, 'redirectUser']);
+Route::get('/address', [SiteController::class, 'address'])->name('address');
 
 Auth::routes();
 
@@ -34,3 +36,17 @@ Route::get('/detail/{id}', [UserController::class, 'detail'])->name('detail');
 Route::get('/welcome',function(){
     return view('auth.registerTowTest');
 });
+
+// Authentication Routes...
+// Route::get('login', [
+//     'as' => 'login',
+//     'uses' => 'Auth\LoginController@showLoginForm'
+//   ])->name('site.login');
+//   Route::post('login', [
+//     'as' => '',
+//     'uses' => 'Auth\LoginController@login'
+//   ])->name('site.login');
+//   Route::get('logout', [
+//     'as' => 'logout',
+//     'uses' => 'Auth\LoginController@logout'
+//   ]);

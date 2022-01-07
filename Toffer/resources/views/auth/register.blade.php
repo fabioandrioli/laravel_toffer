@@ -25,14 +25,13 @@
 
                        <div class="inputs">
                         <label for="password" class="register__text">Senha</label>
-                        <input id="password" type="text" placeholder="Senha" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" required autocomplete="senha" autofocus>
+                        <input id="password" type="password" placeholder="Senha" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" required autocomplete="senha" autofocus>
                        </div>
 
                        <div class="inputs">
                         <label for="password-confirm" class="register__text">Confirme a senha</label>
                         <input id="password-confirm" type="password" class="form-control" placeholder="Confirme a senha" name="password_confirmation" required autocomplete="new-password">
                        </div>
-                    </form>
                      
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
