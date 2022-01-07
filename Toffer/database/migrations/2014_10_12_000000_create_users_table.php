@@ -17,6 +17,8 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('surname');
+            $table->string('status');
+            $table->string('status_cadastro');
             $table->string('phone');
             $table->string('cpf')->nullable();
             $table->string('street_name')->nullable();
