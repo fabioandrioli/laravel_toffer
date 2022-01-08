@@ -142,7 +142,7 @@ main{
 }
 
 .image-preview{
-    margin:20px 0;
+    margin:5px 0;
 }
 
 .input_image{
@@ -150,10 +150,14 @@ main{
 }
 
 .inputs{
-    margin: 50px 0;
+    margin: 10px 0;
 }
 
 .inputs label{
     font-size:22px;
+}
+
+.inputs .form-control{
+    font-size:19px;
 }
 

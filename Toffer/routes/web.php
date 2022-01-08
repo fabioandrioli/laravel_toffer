@@ -24,37 +24,41 @@ use App\Http\Controllers\{
 Route::get('/', [SiteController::class,'index'])->name('index');
 Route::get('/show', [SiteController::class,'show'])->name('show');
 Route::get('/cart', [SiteController::class,'cart'])->name('cart');
-Route::get('/success', [SiteController::class,'success'])->name('success');
-Route::get('/redirect_user', [SiteController::class, 'redirectUser']);
-Route::get('/address', [SiteController::class, 'address'])->name('address');
-Route::post('/saveAddressUser', [SiteController::class, 'saveAddressUser'])->name('saveAddressUser');
 
-Auth::routes();
+//Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'],function(){
+Route::group(['middleware' => 'auth'],function(){
+    Route::get('/success', [SiteController::class,'success'])->name('success');
+    Route::get('/redirect_user', [SiteController::class, 'redirectUser']);
+    Route::get('/address', [SiteController::class, 'address'])->name('address');
+    Route::post('/saveAddressUser', [SiteController::class, 'saveAddressUser'])->name('saveAddressUser');
 
-Route::get('/home', [DashboardController::class, 'index'])->name('home');
-Route::get('/clients', [DashboardController::class, 'clients'])->name('clients');
+    Route::get('/home', [DashboardController::class, 'index'])->name('home');
+    Route::get('/clients', [DashboardController::class, 'clients'])->name('clients');
 
+    Route::get('/dataClient', [ClientController::class, 'index'])->name('dataClient');
+    Route::get('/editClient', [ClientController::class, 'editClient'])->name('editClient');
+    Route::post('/updateClient', [ClientController::class, 'updateClient'])->name('update_client');
 
-Route::get('/dataClient', [ClientController::class, 'index'])->name('dataClient');
-Route::get('/editClient', [ClientController::class, 'editClient'])->name('editClient');
-Route::post('/updateClient', [ClientController::class, 'updateClient'])->name('update_client');
+    Route::get('/editAddress', [ClientController::class, 'editAddress'])->name('editAddress');
+    Route::post('/updateAddress', [ClientController::class, 'updateAddress'])->name('updateAddress');
 
-Route::get('/editAddress', [ClientController::class, 'editAddress'])->name('editAddress');
-Route::post('/updateAddress', [ClientController::class, 'updateAddress'])->name('updateAddress');
+    Route::get('/editPassword', [ClientController::class, 'editPassword'])->name('editPassword');
+    Route::post('/updatePassword', [ClientController::class, 'updatePassword'])->name('updatePassword');
 
-Route::get('/editPassword', [ClientController::class, 'editPassword'])->name('editPassword');
-Route::post('/updatePassword', [ClientController::class, 'updatePassword'])->name('updatePassword');
+    Route::get('/detail/{id}', [UserController::class, 'detail'])->name('detail');
 
-Route::get('/detail/{id}', [UserController::class, 'detail'])->name('detail');
+    Route::get("/product", [ProductController::class, 'index'])->name('product');
+    Route::get("/product-create", [ProductController::class, 'create'])->name('product.create');
+    Route::post("/product-store", [ProductController::class, 'store'])->name('product.store');
+    Route::get("/confirmeDeleteProduct/{id}", [ProductController::class, 'confirmeDeleteProduct'])->name('product.confirm');
+    Route::get("/deleteProduct/{id}", [ProductController::class, 'delete'])->name('product.delete');
+});
 
 Route::get('/welcome',function(){
     return view('auth.registerTowTest');
 });
 
-
-Route::get("/product", [ProductController::class, 'index'])->name('product');
-Route::get("/product-create", [ProductController::class, 'create'])->name('product.create');
-
+Auth::routes();
 // Authentication Routes...
 // Route::get('login', [
 //     'as' => 'login',

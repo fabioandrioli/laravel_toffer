@@ -22,6 +22,8 @@ window.Vue = require('vue').default;
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('button-detail', require('./components/ButtonDetail.vue').default);
+Vue.component('button-delete', require('./components/ButtonDelete.vue').default);
+Vue.component('delete-component', require('./components/deleteComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

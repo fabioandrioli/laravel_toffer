@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -14,7 +15,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('dashboard.product.index');
+        $products = Product::orderBy('id', 'DESC')->get();
+        return view('dashboard.product.index',compact('products'));
     }
 
     /**
@@ -35,7 +37,22 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $data['slug'] = 'teste de produto';
+
+         //pega a imagem
+         if($request->hasFile('image')){
+            $image = $request->file('image');
+
+            $nameImage = uniqid(date('YmdHis')).'.'.$image->getClientOriginalExtension();
+
+            $upload = $image->storeAs('public/products',$nameImage);
+            $data['image'] = $nameImage;
+        }
+
+
+        Product::create($data);
+        return redirect()->route("product");
     }
 
     /**
@@ -47,6 +64,17 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         //
+    }
+
+    public function confirmeDeleteProduct($id){
+        $product = Product::find($id);
+        return response()->json(["product" => $product]);
+    }
+
+    public function delete($id){
+        $product = Product::find($id);
+        $product->delete();
+        return redirect()->route("product");
     }
 
     /**

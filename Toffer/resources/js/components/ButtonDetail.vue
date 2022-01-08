@@ -67,13 +67,14 @@ export default{
     data(){
         return {
             user:{},
+            idUser:this.id,
         };
     },
 
     methods: {
         detail(){
             // console.log(this.id)
-          axios.get("http://127.0.0.1:8000/detail/"+this.id).then((response)=> {
+          axios.get("http://127.0.0.1:8000/detail/"+this.idUser).then((response)=> {
                this.user = response.data;
             })
             .catch(error => console.log(error))
