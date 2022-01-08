@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -38,7 +39,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $data['slug'] = 'teste de produto';
+        $data['slug'] = Str::kebab($data['title']);
 
          //pega a imagem
          if($request->hasFile('image')){
@@ -83,9 +84,16 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        return view('dashboard.product.create',compact('product'));
+    }
+
+    public function editar($id)
+    {
+        $product = Product::find($id);
+        return view('dashboard.product.editar',compact('product'));
     }
 
     /**
@@ -95,9 +103,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        //
+        $product = Product::find($id);
+        $product->update($request);
     }
 
     /**

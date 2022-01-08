@@ -23,7 +23,7 @@
                 <h5>Em estoque: {{$product->qtd}}</h5>
             </div>
             <div class="product_action">
-                <a class="btn btn-warning" style="color:#fff;" href="#">Edtiar</a>
+                <a class="btn btn-warning" style="color:#fff;" href="{{route('product.editar',$product->id)}}">Edtiar</a>
                 <button-delete product="{{$product->id}}"></button-delete>
                 <a class="btn btn-info" style="color:#fff;" href="#">Detalhes</a>
             </div>

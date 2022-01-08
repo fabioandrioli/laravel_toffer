@@ -18,7 +18,7 @@
 
                        <div class="inputs">
                             <label for="summary-ckeditor" class="register__text">Descrição do produto</label>
-                            <textarea value="lorem asdasd asdasdasdasd asdasd asd" class="form-control" id="summary-ckeditor" name="description"></textarea>
+                            <textarea value="lorem asdasd asdasdasdasd asdasd asd" class="form-control" id="summary-ckeditor" name="description">asdasdas</textarea>
                        </div>
 
                        <div class="inputs">

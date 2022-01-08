@@ -6,25 +6,27 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card card-info">
-                <div class="card-header card__header--toffer">{{ __('Cadastrar novo produto') }}</div>
+                <div class="card-header card__header--toffer">{{ __('Editar produto') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="">
                         @csrf
+                        {{method_field('PUT')}}
                        <div class="inputs">
                         <label for="name" class="register__text">Nome do produto</label>
                         <input id="name" name="title" value="{{$product->title}}" type="text" placeholder="Nome do produto" class="form-control" required autocomplete="name" autofocus>
+                        <small>Slug: {{$product->slug}}</small>
                        </div>
 
                        <div class="inputs">
                             <label for="summary-ckeditor" class="register__text">Descrição do produto</label>
-                            <textarea class="form-control" id="summary-ckeditor" name="description">{{!! $product->description !!}}</textarea>
+                            <textarea class="form-control" id="summary-ckeditor" name="description">{{ $product->description }}</textarea>
                        </div>
 
                        <div class="inputs">
                             <label for="cat_image" class="register__text">Imagem do produto</label>
                             <input id="cat_image" type="file" class="input_image form-control" name="image">
-                            <img src="" class="image-preview" id="category-img-tag" width="200px" />   <!--for preview purpose -->
+                            <img src="{{asset("/storage/products/".$product->image)}}" class="image-preview" id="category-img-tag" width="200px" />   <!--for preview purpose -->
                         </div>
 
                        <div class="inputs">
@@ -85,12 +87,10 @@
         </div>
     </div>
 </div>
+
 @endsection
 @push('tinymce')
 
-{{-- <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script> --}}
-{{-- <script src="{{ asset('node_modules/tinymce/tinymce.js') }}"></script> --}}
-<script src="js/ckeditor/ckeditor.js"></script>
 <script>
 
     function readURL(input) {
@@ -110,7 +110,5 @@
     });
 
     CKEDITOR.replace( 'summary-ckeditor' );
-    
-
 </script>
 @endpush
