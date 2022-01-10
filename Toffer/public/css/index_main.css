@@ -110,6 +110,17 @@ a:hover{
     line-height:1.0;
 }
 
+.card_description{
+    /* max-width: 190px; Tamanho */
+    margin-top: 10px;
+    line-height:0.6!important;
+    height:60px;
+    overflow:hidden;
+    white-space: pre;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
 
 @media screen and (max-width: 900px){
 

@@ -8,11 +8,11 @@
         <section class="container-product-description">
             <div class="galeria">
                 <div class="title__mobile">Relógio masculino Ligie</div>
-                <img class="card-image" src="./image/produto/relogio_3.jpg" alt="">
+                <img class="card-image" src="{{asset('/image/produto/relogio_3.jpg')}}" alt="">
                <div class="sub__card">
-                   <a href="#"><img class="sub-card-image active" src="./image/produto/relogio_3.jpg" alt=""></a> 
-                   <a href="#"><img class="sub-card-image" src="./image/produto/relogio_3.jpg" alt=""></a>
-                   <a href="#"><img class="sub-card-image" src="./image/produto/relogio_3.jpg" alt=""></a>
+                   <a href="#"><img class="sub-card-image active" src="{{asset('/image/produto/relogio_3.jpg')}}" alt=""></a> 
+                   <a href="#"><img class="sub-card-image" src="{{asset('/image/produto/relogio_3.jpg')}}" alt=""></a>
+                   <a href="#"><img class="sub-card-image" src="{{asset('/image/produto/relogio_3.jpg')}}" alt=""></a>
                </div>
                 <div class="mobile-image">
                     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -23,15 +23,15 @@
                         </ol>
                         <div class="carousel-inner">
                           <div class="carousel-item active">
-                            <img src="./image/produto/relogio_3.jpg" style="width:100%;" alt="...">
+                            <img src="{{asset('/image/produto/relogio_3.jpg')}}" style="width:100%;" alt="...">
                            
                           </div>
                           <div class="carousel-item">
-                            <img src="./image/produto/relogio_3.jpg" style="width:100%;" alt="...">
+                            <img src="{{asset('/image/produto/relogio_3.jpg')}}" style="width:100%;" alt="...">
                             
                           </div>
                           <div class="carousel-item">
-                            <img src="./image/produto/relogio_3.jpg" style="width:100%;" alt="...">
+                            <img src="{{asset('/image/produto/relogio_3.jpg')}}" style="width:100%;" alt="...">
                             
                           </div>
                         </div>
@@ -49,18 +49,14 @@
                <h5 class="observacao" style="color:#ff0000;font-weight: 500;">Este relógio não é a prova de aguá</h5>
             </div>
             <div class="description">
-                <h1 class="description__title">Marca: Lige</h1>
+                <h1 class="description__title">{{$product->title}}</h1>
                 <p class="description__text">
-                    Lige 2021 novo relógio inteligente 
-                    masculino tela de toque completa 
-                    esporte fitness relógio ip67 
-                    à prova dip67 água bluetooth para android
-                     ios smartwatch masculino + caixa
+                   {{$product->description}}
                 </p>
                 <hr>
                 <h4 class="text__price">
                     <span>R$</span> 
-                    131 
+                    {{number_format($product->unit_price,0,",",".")}}
                     <span>00</span>
                     <span class="promo">R$ 820,10</span>
                 </h4>
@@ -69,23 +65,23 @@
                 </div>
                 <hr>
                 <h4>Frete grátis</h4>
-                <img class="forma_de_pagamento" src="./image/pagamentos/pagamentos.jpg" />
+                <img class="forma_de_pagamento" src="{{asset('/image/pagamentos/pagamentos.jpg')}}" />
             </div>
             <div class="card-action">
                 <h4 class="text__price">
                     <span>R$</span> 
-                    131 
+                    {{number_format($product->unit_price,0,",",".")}}
                    <span>00</span>
                     <span class="promo">R$ 820,10</span>
                 </h4>
                 <h4>Entrega em até 3 horas</h4>
                 <div class="buttons">
-                    <a href="#" class="add__cart">Adicionar ao carrinho</a>
+                    <a href="{{route('cart.add',$product->id)}}" class="add__cart">Adicionar ao carrinho</a>
                     <a href="#" class="mercadopago-button"  onclick="@if(Auth::check()) @if(Auth::user()->address)  checkout.open() @else redirectAddress() @endif @else redirect() @endif">Comprar agora</a>
                 </div>
                 <h4 class="text_frete">Frete grátis</h4>
                 <h4 class="observacao_text">**Entrega apenas no litoral</h4>
-                <img class="forma_de_pagamento" src="./image/pagamentos/pagamentos.jpg" />
+                <img class="forma_de_pagamento" src="{{asset('/image/pagamentos/pagamentos.jpg')}}" />
             </div>       
         </section>
         <section class="perguntas">

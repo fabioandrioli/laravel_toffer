@@ -17,7 +17,13 @@
                 <hr>
                 <h5>Valor: R$ {{$product->unit_price}},00</h5>
                 <hr>
-                <p>{!! $product->description !!}</p>
+            <p style=" 
+                max-width: 90%; 
+                overflow: hidden;
+                height:50px;
+                text-overflow: ellipsis;
+                white-space: wrap;"
+            >{{ $product->description }}</p>
             </div>
             <div class="information">
                 <h5>Em estoque: {{$product->qtd}}</h5>

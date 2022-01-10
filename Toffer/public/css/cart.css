@@ -44,7 +44,12 @@ hr{
 
 .cart-description{
     width:321px;
-    margin-left:15px;
+    line-height:1.2!important;
+    height:148px;
+    overflow:hidden;
+    white-space: wrap;
+    text-overflow: ellipsis;
+    margin-left: 20px;
 }
 
 .cart-description p{
@@ -63,6 +68,8 @@ hr{
 .cart__qtd{
     display:flex;
     align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
 }
 
 .cart__pipe{
@@ -80,7 +87,7 @@ hr{
 }
 
 .text__price{
-    font-size: 40px;
+    font-size: 28px;
   
 }
 
@@ -108,7 +115,7 @@ hr{
 
 .subtotal > h4{
     margin-right: 30px;
-    font-size:35px;
+    font-size:20px;
 }
 
 .cart__action{
@@ -192,4 +199,11 @@ hr{
     -ms-border-radius: 11px!important;
     -o-border-radius: 11px!important;
     box-shadow: 2px 2px 2px black!important;
+}
+
+.product__action{
+    width:100%;
+    display:flex;
+    justify-content:flex-end;
+    flex-wrap:wrap;
 }

@@ -106,7 +106,20 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $product = Product::find($id);
-        $product->update($request);
+        $data = $request->all();
+        $data['slug'] = Str::kebab($data['title']);
+
+        //pega a imagem
+        if($request->hasFile('image')){
+           $image = $request->file('image');
+
+           $nameImage = uniqid(date('YmdHis')).'.'.$image->getClientOriginalExtension();
+
+           $upload = $image->storeAs('public/products',$nameImage);
+           $data['image'] = $nameImage;
+       }
+        $product->update($data);
+        return redirect()->route("product");
     }
 
     /**

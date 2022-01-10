@@ -4,7 +4,7 @@ main{
 }
 
 .container-show{
-    max-width: 1280px;
+    max-width: 1200px;
     display:flex;
     flex-wrap:wrap;
     justify-content: center;
@@ -63,14 +63,9 @@ main{
     font-weight:600;
 }
 
-.description__text{
-    width: 452px;
-    font-size: 25px;
-    color: #565959;
-}
 
 .card-action{
-    width:297px;
+    width:277px;
     border: 1px solid black;
     padding:15px;
     border-radius: 10px;

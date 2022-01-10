@@ -8,6 +8,7 @@ use App\Http\Controllers\{
     UserController,
     ClientController,
     ProductController,
+    CartController,
 };
 
 /*
@@ -21,9 +22,12 @@ use App\Http\Controllers\{
 |
 */
 
-Route::get('/', [SiteController::class,'index'])->name('index');
-Route::get('/show', [SiteController::class,'show'])->name('show');
-Route::get('/cart', [SiteController::class,'cart'])->name('cart');
+Route::get('/', [SiteController::class,'index'])->name('site.index');
+Route::get('/show/{id}', [SiteController::class,'show'])->name('site.show');
+Route::get('/cart', [SiteController::class,'cart'])->name('site.cart');
+Route::get('/add-cart/{id}', [CartController::class,'add'])->name('cart.add');
+Route::get('/remove-cart/{id}', [CartController::class,'remove'])->name('cart.remove');
+Route::get('/remove-cart-product/{id}', [CartController::class,'removeOneproduct'])->name('cart.removeOneproduct');
 
 //Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'],function(){
 Route::group(['middleware' => 'auth'],function(){
@@ -53,7 +57,7 @@ Route::group(['middleware' => 'auth'],function(){
     Route::get("/product/confirmeDelete/{id}", [ProductController::class, 'confirmeDeleteProduct'])->name('product.confirm');
     Route::get("/product/delete/{id}", [ProductController::class, 'delete'])->name('product.delete');
     Route::get("/product/edit/{id}", [ProductController::class, 'editar'])->name('product.editar');
-    Route::get("/product/update/{id}", [ProductController::class, 'update'])->name('product.update');
+    Route::put("/product/update/{id}", [ProductController::class, 'update'])->name('product.update');
 });
 
 Route::get('/welcome',function(){

@@ -55,97 +55,25 @@
     </section>
     <section class="products">
         <div class="container__toffer product_display">
-            
-            <figure class="product__card">
-                <a href="{{route('show')}}">
-                    <img class="card__image" src="./image/produto/relogio_3.jpg" alt="Relógio de couro" srcset="">
-                    <div class="card_body">
-                        <p class="card_title">Lige 2021 novo relógio intelige...</p>
-                        <p class="card_observacao">1 Mais visualizado até agora</p>
-                        <p class="card_sail">4070 vendidos</p>
-                        <h3 class="price">R$ 131,00 <span>R$ 820,10</span></h3>
-                        <p class="price-disable"></p>
-                    </div>
-                </a>
-            </figure>
+            @forelse ($products as $product)
+                <figure class="product__card">
+                    <a href="{{route('site.show',$product->id)}}">
+                        <img class="card__image" src="{{asset("/storage/products/".$product->image)}}" alt="Relógio de couro" srcset="">
+                        <div class="card_body">
+                            <p class="card_title">{{$product->title}}</p>
+                            <p class="card_description">{{$product->description}}</p>
+                            {{-- <p class="card_observacao">1 Mais visualizado até agora</p> --}}
+                            {{-- <p class="card_sail">4070 vendidos</p> --}}
+                            <h3 class="price">R$ {{number_format($product->unit_price,2,",",".")}} <span>R$ 820,10</span></h3>
+                            <p class="price-disable"></p>
+                        </div>
+                    </a>
+                </figure>
+            @empty
+                <h4>Nenhum produto encontrado</h4>
+            @endforelse
+          
 
-            <figure class="product__card">
-                <a href="{{route('show')}}">
-                    <img class="card__image" src="./image/produto/relogio_3.jpg" alt="Relógio de couro" srcset="">
-                    <div class="card_body">
-                        <p class="card_title">Lige 2021 novo relógio intelige...</p>
-                        <p class="card_observacao">1 Mais visualizado até agora</p>
-                        <p class="card_sail">4070 vendidos</p>
-                        <h3 class="price">R$ 131,00 <span>R$ 820,10</span></h3>
-                        <p class="price-disable"></p>
-                    </div>
-                </a>
-            </figure>
-            
-            <figure class="product__card">
-                <a href="{{route('show')}}">
-                    <img class="card__image" src="./image/produto/relogio_3.jpg" alt="Relógio de couro" srcset="">
-                    <div class="card_body">
-                        <p class="card_title">Lige 2021 novo relógio intelige...</p>
-                        <p class="card_observacao">1 Mais visualizado até agora</p>
-                        <p class="card_sail">4070 vendidos</p>
-                        <h3 class="price">R$ 131,00 <span>R$ 820,10</span></h3>
-                        <p class="price-disable"></p>
-                    </div>
-                </a>
-            </figure>
-
-            <figure class="product__card">
-                <a href="{{route('show')}}">
-                    <img class="card__image" src="./image/produto/relogio_3.jpg" alt="Relógio de couro" srcset="">
-                    <div class="card_body">
-                        <p class="card_title">Lige 2021 novo relógio intelige...</p>
-                        <p class="card_observacao">1 Mais visualizado até agora</p>
-                        <p class="card_sail">4070 vendidos</p>
-                        <h3 class="price">R$ 131,00 <span>R$ 820,10</span></h3>
-                        <p class="price-disable"></p>
-                    </div>
-                </a>
-            </figure>
-
-            <figure class="product__card">
-                <a href="{{route('show')}}">
-                    <img class="card__image" src="./image/produto/relogio_3.jpg" alt="Relógio de couro" srcset="">
-                    <div class="card_body">
-                        <p class="card_title">Lige 2021 novo relógio intelige...</p>
-                        <p class="card_observacao">1 Mais visualizado até agora</p>
-                        <p class="card_sail">4070 vendidos</p>
-                        <h3 class="price">R$ 131,00 <span>R$ 820,10</span></h3>
-                        <p class="price-disable"></p>
-                    </div>
-                </a>
-            </figure>
-
-            <figure class="product__card">
-                <a href="{{route('show')}}">
-                    <img class="card__image" src="./image/produto/relogio_3.jpg" alt="Relógio de couro" srcset="">
-                    <div class="card_body">
-                        <p class="card_title">Lige 2021 novo relógio intelige...</p>
-                        <p class="card_observacao">1 Mais visualizado até agora</p>
-                        <p class="card_sail">4070 vendidos</p>
-                        <h3 class="price">R$ 131,00 <span>R$ 820,10</span></h3>
-                        <p class="price-disable"></p>
-                    </div>
-                </a>
-            </figure>
-
-            <figure class="product__card">
-                <a href="{{route('show')}}">
-                    <img class="card__image" src="./image/produto/relogio_3.jpg" alt="Relógio de couro" srcset="">
-                    <div class="card_body">
-                        <p class="card_title">Lige 2021 novo relógio intelige...</p>
-                        <p class="card_observacao">1 Mais visualizado até agora</p>
-                        <p class="card_sail">4070 vendidos</p>
-                        <h3 class="price">R$ 131,00 <span>R$ 820,10</span></h3>
-                        <p class="price-disable"></p>
-                    </div>
-                </a>
-            </figure>
            
         </div>
     </section>

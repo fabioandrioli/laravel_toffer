@@ -9,7 +9,7 @@
                 <div class="card-header card__header--toffer">{{ __('Editar produto') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="">
+                    <form method="POST" action="{{route('product.update',$product->id)}}" enctype="multipart/form-data">
                         @csrf
                         {{method_field('PUT')}}
                        <div class="inputs">
@@ -23,7 +23,7 @@
                             <textarea class="form-control" id="summary-ckeditor" name="description">{{ $product->description }}</textarea>
                        </div>
 
-                       <div class="inputs">
+                        <div class="inputs">
                             <label for="cat_image" class="register__text">Imagem do produto</label>
                             <input id="cat_image" type="file" class="input_image form-control" name="image">
                             <img src="{{asset("/storage/products/".$product->image)}}" class="image-preview" id="category-img-tag" width="200px" />   <!--for preview purpose -->

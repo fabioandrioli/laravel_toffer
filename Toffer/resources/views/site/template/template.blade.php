@@ -17,6 +17,8 @@
   
     </head>
     <body>
+    @inject('cart', 'App\Models\Cart')
+
     <div id="app">
         <header class="header">
             <nav class="menu"> 
@@ -25,7 +27,7 @@
                     <a class="mobile__button" href="#"><i class="fas fa-bars fa-2x"></i></a>
                 </div>
                 <div class="menu__container mobile-active">
-                    <h1><a class="menu__logo" href="{{route('index')}}">TOFFER</a></h1>
+                    <h1><a class="menu__logo" href="{{route('site.index')}}">TOFFER</a></h1>
 
                     <ul>
                         @guest
@@ -39,8 +41,8 @@
                         <button type="button" class="menu__button"><i class="fas fa-search"></i></button>
                     </form>
                     <ul>
-                        <li> <a class="menu__item cart" href="{{route('cart')}}"><i class="fas fa-shopping-cart fa-2x"></i></li>
-                        <li> <a class="menu__item cart" href="{{route('cart')}}"><p>(0)<br>carrinho</p></a></li>
+                        <li> <a class="menu__item cart" href="{{route('site.cart')}}"><i class="fas fa-shopping-cart fa-2x"></i></li>
+                        <li> <a class="menu__item cart" href="{{route('site.cart')}}"><p>@if(Session::has('cart'))({{count(Session::get('cart')->getItems())}}) @else {{(0)}} @endif<br>carrinho</p></a></li>
                     </ul>
                     <ul class="menu__access">
                         @guest
