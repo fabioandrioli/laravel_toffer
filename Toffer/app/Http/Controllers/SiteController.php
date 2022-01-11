@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Cart;
+use Illuminate\Support\Facades\Date;
 
 use Illuminate\Support\Facades\Session;
 
@@ -33,7 +34,7 @@ class SiteController extends Controller
                 $hasAddress = true;
         }
 
-        $preference = $this->mercadoPago();
+        $preference = $this->mercadoPago($product);
         return view('site.home.show',compact('preference','hasAddress','product'));
     }
 
@@ -42,7 +43,7 @@ class SiteController extends Controller
         $cart = new Cart();
 
         $products = $cart->getItems();
-        $preference = $this->mercadoPago();
+        $preference = $this->mercadoPago($products);
         return view('site.home.cart',compact('preference','cart','products'));
     }
 
@@ -50,21 +51,37 @@ class SiteController extends Controller
        
     }
 
-    private function mercadoPago(){
+    private function mercadoPago($product){
         SDK::setAccessToken(config('services.mercadopago.token'));
 
         // Cria um objeto de preferência
         $preference = new MercadoPago\Preference();
 
 
-
+     
         // Cria um item na preferência
+        if(!is_array($product)){
+            $item = new MercadoPago\Item();
+            $item->title = $product->title;
+            $item->quantity = 1;
+            $item->currency_id = 'BRL';
+            $item->unit_price = $product->unit_price;
+            $preference->items = array($item);
+        }else{
+            foreach($product as $prod){
+                $item = new MercadoPago\Item();
+                $item->title = $prod['item']->title;
+                $item->quantity = $prod['qtd'];
+                $item->currency_id = 'BRL';
+                $item->unit_price = $prod['item']->unit_price;
 
-        $item = new MercadoPago\Item();
-        $item->title = 'Meu produto';
-        $item->quantity = 1;
-        $item->unit_price = 70.56;
-        
+                $products[] = $item;
+            }
+
+ 
+
+            $preference->items = $products;
+        }
 
         
         $preference->back_urls = array(
@@ -74,7 +91,19 @@ class SiteController extends Controller
         );
         $preference->auto_return = "approved";
 
-        $preference->items = array($item);
+        // $payer = new MercadoPago\Payer();
+        // // $payer->id      =  Auth::user()->id;
+        // $payer->name    = Auth::user()->name;
+        // $payer->email   = Auth::user()->email;
+        // $payer->surname = Auth::user()->name;
+        // $address['address'] = Auth::user()->address;
+        // $payer->date_created = date("Y-m-d");
+
+        // $payer->address =  $address['address'];
+
+       
+
+        // $preference->payer = $payer;
         $preference->save();
         return $preference;
     }
@@ -88,7 +117,7 @@ class SiteController extends Controller
 
     public function redirectUser(){
         if(Auth::user()->role == "cliente"){
-            return redirect()->route("index");
+            return redirect()->route("site.index");
         }else{
             return redirect()->route("clients");
         }
