@@ -15,7 +15,7 @@
                 <hr>
                 <li><a href="{{route('product')}}"><i class="fas fa-box fa-2x"></i> Produtos</a></li>
                 <hr>
-                <li><a href="#"><i class="fas fa-th fa-2x"></i> Categorias</a></li>
+                <li><a href="{{route('category')}}"><i class="fas fa-th fa-2x"></i> Categorias</a></li>
                 <hr>
                 <li><a href="#"><i class="fas fa-th-large fa-2x"></i> SubCategoria</a></li>
                 <hr>

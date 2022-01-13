@@ -47,7 +47,6 @@ class ClientController extends Controller
 
     public function updatePassword(Request $request){
         $user = Auth::user();
-
         $data = $request->all();
         $data['password'] = bcrypt($data['password']);
         $user->update($data);

@@ -30,7 +30,9 @@
                        <div class="inputs">
                             <label for="exampleFormControlSelect1">Selecione uma categoria</label>
                             <select name="category_id" class="form-control" id="exampleFormControlSelect1">
-                                <option value="1" selected>Eletrônicos</option>
+                              @foreach($categories as $category)
+                                <option value="{{$category->id}}" selected>{{$category->name}}</option>
+                              @endforeach
                             </select>
                         </div>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -27,7 +28,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('dashboard.product.create');
+        $categories = Category::all();
+        return view('dashboard.product.create',compact('categories'));
     }
 
     /**
@@ -86,8 +88,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
+        $categories = Category::all();
         $product = Product::find($id);
-        return view('dashboard.product.create',compact('product'));
+        return view('dashboard.product.create',compact('product','categories'));
     }
 
     public function editar($id)
@@ -109,13 +112,22 @@ class ProductController extends Controller
         $data = $request->all();
         $data['slug'] = Str::kebab($data['title']);
 
+        
+
         //pega a imagem
         if($request->hasFile('image')){
-           $image = $request->file('image');
+
+            
+            $image = $request->file('image');
+            
+            if (Storage::exists($image)) {
+                Storage::delete($image);
+            }
 
            $nameImage = uniqid(date('YmdHis')).'.'.$image->getClientOriginalExtension();
 
            $upload = $image->storeAs('public/products',$nameImage);
+           
            $data['image'] = $nameImage;
        }
         $product->update($data);

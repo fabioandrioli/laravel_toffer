@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
+
+    public function __construct(){
+        // $this->middleware(['can:Categories']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::latest()->paginate(10);
+        return view("dashboard.category.index",compact('categories'));
     }
 
     /**
@@ -24,7 +30,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view("dashboard.category.create");
     }
 
     /**
@@ -35,7 +41,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $data['slug'] = Str::kebab($data['name']);
+        Category::create($data);
+        return redirect()->route("category");
     }
 
     /**
@@ -55,9 +64,10 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function editar($id)
     {
-        //
+        $category = Category::find($id);
+        return view("dashboard.category.edit",compact('category'));
     }
 
     /**
@@ -67,9 +77,19 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+        $category = Category::find($id);
+        $data = $request->all();
+        $data['slug'] = Str::kebab($data['name']);
+        $category->update($data);
+        return redirect()->route("category");
+    }
+
+    public function delete($id){
+        $category = Category::find($id);
+        $category->delete();
+        return redirect()->route("category");
     }
 
     /**

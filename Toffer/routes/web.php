@@ -9,6 +9,7 @@ use App\Http\Controllers\{
     ClientController,
     ProductController,
     CartController,
+    CategoryController,
 };
 
 /*
@@ -30,7 +31,10 @@ Route::get('/remove-cart/{id}', [CartController::class,'remove'])->name('cart.re
 Route::get('/remove-cart-product/{id}', [CartController::class,'removeOneproduct'])->name('cart.removeOneproduct');
 
 //Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'],function(){
-Route::group(['middleware' => 'auth'],function(){
+    Route::group(['middleware' => 'auth'],function(){
+        
+    Route::post('/duvidas', [SiteController::class,'duvidas'])->name('site.duvidas');
+
     Route::get('/success', [SiteController::class,'success'])->name('success');
     Route::get('/redirect_user', [SiteController::class, 'redirectUser']);
     Route::get('/address', [SiteController::class, 'address'])->name('address');
@@ -58,6 +62,13 @@ Route::group(['middleware' => 'auth'],function(){
     Route::get("/product/delete/{id}", [ProductController::class, 'delete'])->name('product.delete');
     Route::get("/product/edit/{id}", [ProductController::class, 'editar'])->name('product.editar');
     Route::put("/product/update/{id}", [ProductController::class, 'update'])->name('product.update');
+
+    Route::get("/category", [CategoryController::class, 'index'])->name('category');
+    Route::get("/category/create", [CategoryController::class, 'create'])->name('category.create');
+    Route::post("/category/store", [CategoryController::class, 'store'])->name('category.store');
+    Route::get("/category/delete/{id}", [CategoryController::class, 'delete'])->name('category.delete');
+    Route::get("/category/edit/{id}", [CategoryController::class, 'editar'])->name('category.editar');
+    Route::put("/category/update/{id}", [CategoryController::class, 'update'])->name('category.update');
 });
 
 Route::get('/welcome',function(){

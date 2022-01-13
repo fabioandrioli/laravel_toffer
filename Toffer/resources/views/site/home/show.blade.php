@@ -4,7 +4,10 @@
 
 @section('content')
 <main>
+  @if(isset($product))
     <div class="container-show">
+      @include('site.home.includes.message')
+     
         <section class="container-product-description">
             <div class="galeria">
                 <div class="title__mobile">Relógio masculino Ligie</div>
@@ -49,6 +52,7 @@
                <h5 class="observacao" style="color:#ff0000;font-weight: 500;">Este relógio não é a prova de aguá</h5>
             </div>
             <div class="description">
+             
                 <h1 class="description__title">{{$product->title}}</h1>
                 <p class="description__text">
                    {{$product->description}}
@@ -82,13 +86,15 @@
                 <h4 class="text_frete">Frete grátis</h4>
                 <h4 class="observacao_text">**Entrega apenas no litoral</h4>
                 <img class="forma_de_pagamento" src="{{asset('/image/pagamentos/pagamentos.jpg')}}" />
-            </div>       
+            </div> 
         </section>
         <section class="perguntas">
-         <form action="" method="post">
+         
+         <form action="{{route("site.duvidas")}}" method="post">
+            @csrf
             <h4>Dúvidas ?</h4>
             <div class="input-group input-group-lg">
-                <input type="text" placeholder="Digite suas dúvidas" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                <input type="text" name="doubt" placeholder="Digite suas dúvidas" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
               </div>
               <button class="btn btn-info mt-3 mb-3 btn-mobile">Enviar</button>
          </form>
@@ -117,32 +123,35 @@
               </div>
         </section>
     </div>
+    @else
+    <h1>Nenhum produto encontrado</h1>
+    @endif
 </main>
 
 @endsection
 @push('scripts')
-<script>
+  @if(isset($product))
+    <script>
+        // Adicione as credenciais do SDK
+        const mp = new MercadoPago("{{config('services.mercadopago.key')}}", {
+                locale: 'pt-BR'
+        });
+        
+        // Inicialize o checkout
+        const checkout = mp.checkout({
+            preference: {
+                id: '{{ $preference->id }}'
+            },
+        });
 
+        function redirect(){
+          window.location.href = "{{route('login')}}";
+        }
 
-    // Adicione as credenciais do SDK
-    const mp = new MercadoPago("{{config('services.mercadopago.key')}}", {
-            locale: 'pt-BR'
-    });
-    
-    // Inicialize o checkout
-    const checkout = mp.checkout({
-        preference: {
-            id: '{{ $preference->id }}'
-        },
-    });
+        function redirectAddress(){
+          window.location.href = "{{route('address')}}";
+        }
 
-    function redirect(){
-      window.location.href = "{{route('login')}}";
-    }
-
-    function redirectAddress(){
-      window.location.href = "{{route('address')}}";
-    }
-
-</script>
+    </script>
+  @endif
 @endpush

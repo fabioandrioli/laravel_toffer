@@ -98,7 +98,7 @@
 </main>
 
 @endsection
-
+@if(Session::has('cart'))
     @push('scripts')
     <script>
 
@@ -125,4 +125,4 @@
     
     </script>
     @endpush
-
+@endif

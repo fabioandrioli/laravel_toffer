@@ -15,6 +15,11 @@ class Cart extends Model
     public $items = [];
 
     public function __construct(){
+        $product = Product::first();
+        if($product == null){
+            Session::forget('cart');
+        }
+
         if(Session::has('cart')){
             $cart = Session::get('cart');
             $this->items = $cart->items;
