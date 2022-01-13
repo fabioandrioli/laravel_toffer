@@ -19,7 +19,7 @@
 
                        <div class="inputs">
                             <label for="summary-ckeditor" class="register__text">Descrição da categoria</label>
-                            <textarea   class="form-control" id="summary-ckeditor" name="description">{!! $category->description !!}</textarea>
+                            <textarea   class="form-control"  name="description">{{ $category->description }}</textarea>
                        </div>
 
 

@@ -64,7 +64,7 @@
                             <p class="card_description">{{$product->description}}</p>
                             {{-- <p class="card_observacao">1 Mais visualizado até agora</p> --}}
                             {{-- <p class="card_sail">4070 vendidos</p> --}}
-                            <h3 class="price">R$ {{number_format($product->unit_price,2,",",".")}} <span>R$ 820,10</span></h3>
+                            <h3 class="price">@if($product->discount && $product->discount > 0) R$ {{number_format($product->unit_price - (($product->unit_price * $product->discount)/100),2,",",".")}} <span>R$ {{number_format($product->unit_price,2,",",".")}}</span>@else  {{number_format($product->unit_price,2,",",".")}} @endif</h3>
                             <p class="price-disable"></p>
                         </div>
                     </a>

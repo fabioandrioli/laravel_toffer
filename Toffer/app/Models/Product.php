@@ -21,7 +21,8 @@ class Product extends Model
         'type',
         'status',
         'qtd',
-        'observacao'
+        'discount',
+        'observacao',
     ];
 
     public function category(){
@@ -30,5 +31,9 @@ class Product extends Model
 
     public function images(){
         return $this->hasMany(Photo::class);
+    }
+
+    public function specifications(){
+        return $this->hasMany(Specification::class);
     }
 }

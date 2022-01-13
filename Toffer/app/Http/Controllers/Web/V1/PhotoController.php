@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web\V1;
 
-use App\Models\Address;
+use App\Http\Controllers\Controller;
+
+use App\Models\Photo;
 use Illuminate\Http\Request;
 
-class AddressController extends Controller
+class PhotoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +43,10 @@ class AddressController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Address  $address
+     * @param  \App\Models\Photo  $photo
      * @return \Illuminate\Http\Response
      */
-    public function show(Address $address)
+    public function show(Photo $photo)
     {
         //
     }
@@ -52,10 +54,10 @@ class AddressController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Address  $address
+     * @param  \App\Models\Photo  $photo
      * @return \Illuminate\Http\Response
      */
-    public function edit(Address $address)
+    public function edit(Photo $photo)
     {
         //
     }
@@ -64,10 +66,10 @@ class AddressController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Address  $address
+     * @param  \App\Models\Photo  $photo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Address $address)
+    public function update(Request $request, Photo $photo)
     {
         //
     }
@@ -75,10 +77,10 @@ class AddressController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Address  $address
+     * @param  \App\Models\Photo  $photo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Address $address)
+    public function destroy(Photo $photo)
     {
         //
     }

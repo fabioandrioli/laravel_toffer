@@ -25,7 +25,7 @@
                 <hr>
                 <li><a href="#"><i class="fas fa-chart-bar fa-2x"></i> Estatísticas</a></li>
                 <hr>
-                <li><a href="#"><i class="fas fa-bullhorn fa-2x"></i> Perguntas</a></li>
+                <li><a href="{{route("doubt")}}"><i class="fas fa-bullhorn fa-2x"></i> Perguntas</a></li>
                 <hr>
             </ul>
         </div>

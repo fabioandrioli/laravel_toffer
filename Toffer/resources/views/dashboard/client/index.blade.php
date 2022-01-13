@@ -9,8 +9,12 @@
             <div class="col-sm-12">
                 <div class="col-xs-12 col-sm-12">
                     <h2>{{$user->name}}</h2>
+                    @if($user->phone)
+                        <p><strong>Telefone: </strong>{{$user->phone}}</p>
+                    @else
+                        <p><strong>Nenhum telefone cadastrado</p>
+                    @endif
                     @if(isset($user->address))
-                        <p><strong>telefone: </strong>{{$user->phone}}</p>
                         <p><strong>Endereço: </strong> {{$user->address->street_name}}, {{$user->address->street_number}} - {{$user->address->district}} / {{$user->address->city}} </p>
                         <p><strong>Complemento: </strong> {{$user->address->complement}} </p>
                         <p><strong>Referencia: </strong> {{$user->address->reference}}</p>
@@ -18,7 +22,7 @@
                     @else
                         <a href="{{route('address')}}">Cadastre seu endereço</a>
                     @endif
-                        <p><strong>email: </strong>
+                        <p><strong>Email: </strong>
                         <span class="tags">{{$user->email}}</span>
 
                     </p>

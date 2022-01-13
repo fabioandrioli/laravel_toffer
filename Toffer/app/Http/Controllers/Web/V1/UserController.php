@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web\V1;
 
-use App\Models\Order;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
-class OrderController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,21 +42,27 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Order  $order
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show($id)
     {
-        //
+    
+    }
+
+    public function detail($id)
+    {
+        $user = User::find($id);
+        return response()->json($user);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Order  $order
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +71,10 @@ class OrderController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Order  $order
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +82,10 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Order  $order
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy($id)
     {
         //
     }

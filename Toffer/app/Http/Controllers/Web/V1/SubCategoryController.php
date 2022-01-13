@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web\V1;
 
-use App\Models\Photo;
+use App\Http\Controllers\Controller;
+
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
-class PhotoController extends Controller
+class SubCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +43,10 @@ class PhotoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Photo  $photo
+     * @param  \App\Models\SubCategory  $subCategory
      * @return \Illuminate\Http\Response
      */
-    public function show(Photo $photo)
+    public function show(SubCategory $subCategory)
     {
         //
     }
@@ -52,10 +54,10 @@ class PhotoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Photo  $photo
+     * @param  \App\Models\SubCategory  $subCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(Photo $photo)
+    public function edit(SubCategory $subCategory)
     {
         //
     }
@@ -64,10 +66,10 @@ class PhotoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Photo  $photo
+     * @param  \App\Models\SubCategory  $subCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Photo $photo)
+    public function update(Request $request, SubCategory $subCategory)
     {
         //
     }
@@ -75,10 +77,10 @@ class PhotoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Photo  $photo
+     * @param  \App\Models\SubCategory  $subCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Photo $photo)
+    public function destroy(SubCategory $subCategory)
     {
         //
     }

@@ -26,10 +26,13 @@
                             <div class="cart__price">
                                 <h4 class="text__price">
                                     <span>R$</span> 
-                                    {{number_format($product['item']->unit_price,0,",",".")}}
+                                    @if($product['item']->discount && $product['item']->discount > 0) {{number_format($product['item']->unit_price - (($product['item']->unit_price * $product['item']->discount)/100),0,",",".")}} @else  {{number_format($product['item']->unit_price,0,",",".")}} @endif
                                     <span>00</span>
+                                    
                                 </h4>
-                                <span class="promo">R$ 820,10</span>
+                                @if($product['item']->discount && $product['item']->discount > 0)
+                                    <span class="promo">R$  {{number_format($product['item']->unit_price,2,",",".")}}</span>
+                                @endif
                             </div>
                             <div class="product__action">
                                 <h5 style="width:100%;">
@@ -46,7 +49,7 @@
                                         <div class="cart__price">
                                             <h4 class="text__price">
                                                 <span>R$</span> 
-                                                {{number_format($product['item']->unit_price *  $product['qtd'],0,",",".")}}
+                                                @if($product['item']->discount && $product['item']->discount > 0) {{number_format( ($product['item']->unit_price - ( ($product['item']->unit_price * $product['item']->discount)/100)) * $product['qtd'],0,",",".")}} @else {{number_format($product['item']->unit_price *  $product['qtd'],0,",",".")}} @endif
                                                 <span>00</span>
                                             </h4>
                                         </div>
@@ -64,7 +67,7 @@
                 <div class="cart__price">
                     <h4 class="text__price">
                         <span>R$</span> 
-                        {{number_format($cart->total(),0,",",".")}}
+                       {{number_format($cart->total(),0,",",".")}}
                         <span>00</span>
                     </h4>
                 </div>

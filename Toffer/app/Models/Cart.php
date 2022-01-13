@@ -63,7 +63,12 @@ class Cart extends Model
     public function total(){
         $total = 0;
         foreach($this->items as $item){
-           $subtotal = $item['item']->unit_price * $item['qtd'];
+    
+            if($item['item']->discount && $item['item']->discount > 0){
+                $subtotal = ($item['item']->unit_price -  ($item['item']->unit_price * $item['item']->discount / 100)) * $item['qtd'];
+            }else{
+               $subtotal = $item['item']->unit_price * $item['qtd'];
+            }
            $total += $subtotal;
         }
         return $total;

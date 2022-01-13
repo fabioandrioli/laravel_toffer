@@ -18,7 +18,8 @@
 
                        <div class="inputs">
                             <label for="summary-ckeditor" class="register__text">Descrição do produto</label>
-                            <textarea value="lorem asdasd asdasdasdasd asdasd asd" class="form-control" id="summary-ckeditor" name="description">asdasdas</textarea>
+                            <textarea class="form-control"  name="description">asdasdas</textarea>
+                            {{-- <textarea class="form-control" id="summary-ckeditor" name="description">asdasdas</textarea> --}}
                        </div>
 
                        <div class="inputs">
@@ -64,7 +65,7 @@
 
                         <div class="inputs">
                             <label for="discount" class="register__text">Desconto</label>
-                            <input value="30" class="form-control" placeholder="Desconto" type="number" id="discount" name="desconto">
+                            <input value="30" class="form-control" placeholder="Desconto" type="number" id="discount" name="discount">
                         </div>
 
                         <div class="inputs">

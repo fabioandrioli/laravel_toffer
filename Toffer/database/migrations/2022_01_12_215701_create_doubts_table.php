@@ -16,6 +16,9 @@ class CreateDoubtsTable extends Migration
         Schema::create('doubts', function (Blueprint $table) {
             $table->id();
             $table->string("doubt");
+            $table->string("email");
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

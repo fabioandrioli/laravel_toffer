@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web\V1;
 
-use App\Models\Specification;
+use App\Http\Controllers\Controller;
+
+use App\Models\Address;
 use Illuminate\Http\Request;
 
-class SpecificationController extends Controller
+class AddressController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +43,10 @@ class SpecificationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Specification  $specification
+     * @param  \App\Models\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function show(Specification $specification)
+    public function show(Address $address)
     {
         //
     }
@@ -52,10 +54,10 @@ class SpecificationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Specification  $specification
+     * @param  \App\Models\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function edit(Specification $specification)
+    public function edit(Address $address)
     {
         //
     }
@@ -64,10 +66,10 @@ class SpecificationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Specification  $specification
+     * @param  \App\Models\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Specification $specification)
+    public function update(Request $request, Address $address)
     {
         //
     }
@@ -75,10 +77,10 @@ class SpecificationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Specification  $specification
+     * @param  \App\Models\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Specification $specification)
+    public function destroy(Address $address)
     {
         //
     }

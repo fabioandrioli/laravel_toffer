@@ -48,8 +48,10 @@
                         </button>
                     </div>
                 </div>
-               <h4 class="observacao">* Informação importante</h4>
-               <h5 class="observacao" style="color:#ff0000;font-weight: 500;">Este relógio não é a prova de aguá</h5>
+              @isset($product->observacao)
+                <h4 class="observacao">* Informação importante</h4>
+                <h5 class="observacao" style="color:#ff0000;font-weight: 500;">{{$product->observacao}}</h5>
+              @endif
             </div>
             <div class="description">
              
@@ -59,24 +61,31 @@
                 </p>
                 <hr>
                 <h4 class="text__price">
-                    <span>R$</span> 
-                    {{number_format($product->unit_price,0,",",".")}}
-                    <span>00</span>
-                    <span class="promo">R$ 820,10</span>
+                  <span>R$</span> 
+                  @if($product->discount) {{number_format($product->unit_price - (($product->unit_price * $product->discount)/100),0,",",".")}} @else  {{number_format($product->unit_price,0,",",".")}} @endif
+                  <span>00</span>
+                  @if($product->discount)
+                      <span class="promo">R$  {{number_format($product->unit_price,2,",",".")}}</span>
+                  @endif
                 </h4>
-                <div class="card-desconto">
-                    <p>30% desconto</p>
-                </div>
+                @if($product->discount && $product->discount > 0)
+                  <div class="card-desconto">
+                      <p>{{$product->discount}}% desconto</p>
+                  </div>
+                @endif
                 <hr>
+                
                 <h4>Frete grátis</h4>
                 <img class="forma_de_pagamento" src="{{asset('/image/pagamentos/pagamentos.jpg')}}" />
             </div>
             <div class="card-action">
                 <h4 class="text__price">
                     <span>R$</span> 
-                    {{number_format($product->unit_price,0,",",".")}}
+                    @if($product->discount && $product->discount > 0) {{number_format($product->unit_price - (($product->unit_price * $product->discount)/100),0,",",".")}} @else  {{number_format($product->unit_price,0,",",".")}} @endif
                    <span>00</span>
-                    <span class="promo">R$ 820,10</span>
+                   @if($product->discount && $product->discount > 0)
+                      <span class="promo">R$  {{number_format($product->unit_price,2,",",".")}}</span>
+                  @endif
                 </h4>
                 <h4>Entrega em até 3 horas</h4>
                 <div class="buttons">
@@ -100,28 +109,26 @@
          </form>
          <hr>
         </section>
-        <section class="especificacoes">
-            <h3>Especificações do produto</h3>
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                      <tbody>
-                        <tr>
-                          <td>Marca</td>
-                          <td>Otto</td>
-                        </tr>
-                        <tr>
-                          <td>Modelo</td>
-                          <td>Thornton</td>
-                        </tr>
-                        <tr>
-                          <td>Tipo de tela</td>
-                          <td>the Bird</td>
-                        </tr>
-                      </tbody>
-                </table>
-              </div>
-        </section>
+        @isset($product->specifications)
+          <section class="especificacoes">
+              <h3>Especificações do produto</h3>
+              <div class="table-responsive">
+                  <table class="table">
+                      <thead>
+                        <tbody>
+                          @forelse($product->specifications as $specification)
+                            <tr>
+                              <td>{{$specification->title}}</td>
+                              <td>{{$specification->description}}</td>
+                            </tr>
+                          @empty
+                            <td>Nenhuma especificação</td>
+                          @endforelse
+                        </tbody>
+                  </table>
+                </div>
+          </section>
+        @endisset
     </div>
     @else
     <h1>Nenhum produto encontrado</h1>

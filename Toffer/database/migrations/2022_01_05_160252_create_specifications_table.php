@@ -16,7 +16,7 @@ class CreateSpecificationsTable extends Migration
         Schema::create('specifications', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('descritpion');
+            $table->string('description');
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products');
             $table->timestamps();

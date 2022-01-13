@@ -1,6 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+
+namespace App\Http\Controllers\Web\V1;
+
+use App\Http\Controllers\Controller;
+
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -58,7 +62,7 @@ class SiteController extends Controller
 
         // Cria um objeto de preferência
         $preference = new MercadoPago\Preference();
-
+        $cart = new Cart();
 
         if(!empty($product)){
             // Cria um item na preferência
@@ -67,7 +71,11 @@ class SiteController extends Controller
                 $item->title = $product->title;
                 $item->quantity = 1;
                 $item->currency_id = 'BRL';
-                $item->unit_price = $product->unit_price;
+                if($product->discount && $product->discount > 0){
+                    $item->unit_price = $product->unit_price - ($product->unit_price * $product->discount / 100);
+                }else{
+                    $item->unit_price = $product->unit_price;
+                }
                 $preference->items = array($item);
             }else{
                 foreach($product as $prod){
@@ -75,7 +83,11 @@ class SiteController extends Controller
                     $item->title = $prod['item']->title;
                     $item->quantity = $prod['qtd'];
                     $item->currency_id = 'BRL';
-                    $item->unit_price = $prod['item']->unit_price;
+                    if($prod['item']->discount && $prod['item']->discount > 0){
+                        $item->unit_price = $prod['item']->unit_price - ($prod['item']->unit_price * $prod['item']->discount / 100);
+                    }else{
+                        $item->unit_price = $prod['item']->unit_price;
+                    }
 
                     $products[] = $item;
                 }
@@ -102,7 +114,7 @@ class SiteController extends Controller
             // $payer->date_created = date("Y-m-d");
 
             // $payer->address =  $address['address'];
-
+            
         
 
             // $preference->payer = $payer;
@@ -144,7 +156,10 @@ class SiteController extends Controller
     }
 
     public function duvidas(Request $request){
-        Doubt::create($request->all());
+        $data = $request->all();
+        $data['email'] = Auth::user()->email;
+        $data['user_id'] = Auth::user()->id;
+        Doubt::create();
         session(['message' => 'Sua duvida foi enviada com sucesso']);
         return redirect()->back();
     }

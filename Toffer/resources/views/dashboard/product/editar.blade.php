@@ -20,7 +20,7 @@
 
                        <div class="inputs">
                             <label for="summary-ckeditor" class="register__text">Descrição do produto</label>
-                            <textarea class="form-control" id="summary-ckeditor" name="description">{{ $product->description }}</textarea>
+                            <textarea class="form-control" name="description">{{ $product->description }}</textarea>
                        </div>
 
                         <div class="inputs">

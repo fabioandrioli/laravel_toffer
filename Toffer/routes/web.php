@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 require "site/site.route.php";
 require "cart/cart.route.php";
+require "webhook/webhook.route.php";
 
 //Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'],function(){
 Route::group(['middleware' => 'auth'],function(){
@@ -26,6 +27,7 @@ Route::group(['middleware' => 'auth'],function(){
     require "category/category.route.php";
     require "client/client.route.php";
     require "dashboard/dashboard.route.php";
+    require "doubt/doubt.route.php";
 
 });
 
