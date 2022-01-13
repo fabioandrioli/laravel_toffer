@@ -98,8 +98,8 @@
 </main>
 
 @endsection
-@if(Session::has('cart'))
-    @push('scripts')
+@if(Session::has('cart') && count(Session::get('cart')->getItems()) > 0)
+@push('scripts')
     <script>
 
 

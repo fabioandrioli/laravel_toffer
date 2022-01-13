@@ -144,8 +144,8 @@ class SiteController extends Controller
     }
 
     public function duvidas(Request $request){
-       // Doubt::create($request->all());
-        session(['message' => 'Sua duvida foi respondida']);
+        Doubt::create($request->all());
+        session(['message' => 'Sua duvida foi enviada com sucesso']);
         return redirect()->back();
     }
 
