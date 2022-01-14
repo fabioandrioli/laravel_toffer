@@ -18,11 +18,11 @@ class NotificationPayment extends Notification implements ShouldQueue
      * @return void
      */
 
-     protected $user;
 
-    public function __construct(User $user)
+
+    public function __construct()
     {
-        $this->user = $user;
+  
     }
 
     /**
@@ -45,9 +45,9 @@ class NotificationPayment extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->line('Um novo pagamento foi efetuado.')
+                    ->action('Ver pedidos', route('order'))
+                    ->line('Verifique seus pedidos');
     }
 
     /**

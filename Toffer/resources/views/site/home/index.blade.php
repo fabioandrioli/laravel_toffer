@@ -56,26 +56,33 @@
     <section class="products">
         <div class="container__toffer product_display">
             @forelse ($products as $product)
-                <figure class="product__card">
-                    <a href="{{route('site.show',$product->id)}}">
-                        <img class="card__image" src="{{asset("/storage/products/".$product->image)}}" alt="Relógio de couro" srcset="">
-                        <div class="card_body">
-                            <p class="card_title">{{$product->title}}</p>
-                            <p class="card_description">{{$product->description}}</p>
-                            {{-- <p class="card_observacao">1 Mais visualizado até agora</p> --}}
-                            {{-- <p class="card_sail">4070 vendidos</p> --}}
-                            <h3 class="price">@if($product->discount && $product->discount > 0) R$ {{number_format($product->unit_price - (($product->unit_price * $product->discount)/100),2,",",".")}} <span>R$ {{number_format($product->unit_price,2,",",".")}}</span>@else  {{number_format($product->unit_price,2,",",".")}} @endif</h3>
-                            <p class="price-disable"></p>
-                        </div>
-                    </a>
-                </figure>
+                @if($product->category->status == "ativo")
+                    <figure class="product__card">
+                        <a href="{{route('site.show',$product->id)}}">
+                            <img class="card__image" src="{{asset("/storage/products/".$product->image)}}" alt="Relógio de couro" srcset="">
+                            <div class="card_body">
+                                <p class="card_title">{{$product->title}}</p>
+                                <p class="card_description">{{$product->description}}</p>
+                                {{-- <p class="card_observacao">1 Mais visualizado até agora</p> --}}
+                                {{-- <p class="card_sail">4070 vendidos</p> --}}
+                                <h3 class="price">@if($product->discount && $product->discount > 0) R$ {{number_format($product->unit_price - (($product->unit_price * $product->discount)/100),2,",",".")}} <span>R$ {{number_format($product->unit_price,2,",",".")}}</span>@else  {{number_format($product->unit_price,2,",",".")}} @endif</h3>
+                                <div class="card__frete">
+                                    <h5>Frete grátis</h5>
+                                </div>
+                            </div>
+
+                        </a>
+                    </figure>
+                @endif
             @empty
                 <h4>Nenhum produto encontrado</h4>
-            @endforelse
-          
-
-           
+            @endforelse 
         </div>
+        @if(isset($filters))
+            {!! $products->appends($filters)->links("pagination::bootstrap-4") !!}
+        @else
+            {!! $products->links("pagination::bootstrap-4") !!}
+        @endif
     </section>
 </main>
 @endsection

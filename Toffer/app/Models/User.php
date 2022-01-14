@@ -50,4 +50,9 @@ class User extends Authenticatable
     public function address(){
         return $this->hasOne(Address::class);
     }
+
+    public function role($role){
+        
+        return true;//$this->user->role == $role;
+    }
 }

@@ -28,6 +28,7 @@ Route::group(['middleware' => 'auth'],function(){
     require "client/client.route.php";
     require "dashboard/dashboard.route.php";
     require "doubt/doubt.route.php";
+    require "order/order.route.php";
 
 });
 

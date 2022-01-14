@@ -15,7 +15,10 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            // $table->unsignedBigInteger('user_id');
+            // $table->foreign('user_id')->references('id')->on('users');
             $table->string("collection_id")->nullable();
+            $table->string("situation")->default("waiting");
             $table->string("collection_status")->nullable();
             $table->string("payment_id")->nullable();
             $table->string("status")->nullable();

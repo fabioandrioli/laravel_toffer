@@ -14,6 +14,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Nome da categoia</th>
                     <th scope="col">slug da categoia</th>
+                    <th scope="col">status</th>
                     <th class="action">Ações</th>
                 </tr>
                 </thead>
@@ -23,6 +24,7 @@
                     <th scope="row">{{$category->id}}</th>
                     <td>{{$category->name}}</td>
                     <td>{{$category->slug}}</td>
+                    <td>{{$category->status}}</td>
                     <td class="action">
                         <a class="btn btn-warning" href="{{route('category.editar',$category->id)}}"><i class="fa fa-edit"></i></a>
                         <a class="btn btn-danger" href="{{route('category.delete',$category->id)}}"><i class="fas fa-trash"></i></a>

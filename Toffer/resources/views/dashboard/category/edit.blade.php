@@ -22,6 +22,14 @@
                             <textarea   class="form-control"  name="description">{{ $category->description }}</textarea>
                        </div>
 
+                       <div class="inputs">
+                            <label for="exampleFormControlSelect3">Status</label>
+                            <select name="status" class="form-control" id="exampleFormControlSelect3">
+                                <option value="{{$category->status}}" selected>{{$category->status}}</option>
+                                <option value="ativo">ativo</option>
+                                <option value="inativo">inativo</option>
+                            </select>
+                        </div>
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">

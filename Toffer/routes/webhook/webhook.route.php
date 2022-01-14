@@ -5,6 +5,6 @@
         WebhookController,
     };
     
-   // Route::post('/webhook',WebhookController::class);
+   Route::post('/webhook',[WebhookController::class,"payment"]);
   
    

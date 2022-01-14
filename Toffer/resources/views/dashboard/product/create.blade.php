@@ -53,8 +53,8 @@
                         <div class="inputs">
                             <label for="exampleFormControlSelect3">Status</label>
                             <select name="type" class="form-control" id="exampleFormControlSelect3">
-                                <option value="Ativo" selected>Ativo</option>
-                                <option value="Inativo">Inativo</option>
+                                <option value="unidade" selected>Ativo</option>
+                                <option value="kg">Inativo</option>
                             </select>
                         </div>
 

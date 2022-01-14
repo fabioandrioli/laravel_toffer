@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\Doubt;
+use App\Models\Order;
 use Illuminate\Support\Facades\Date;
 
 use Illuminate\Support\Facades\Session;
@@ -23,7 +24,7 @@ class SiteController extends Controller
 {
     public function index(){
         
-      $products = Product::orderBy('id', 'DESC')->get();
+      $products = Product::where("status","ativo")->orderBy('id', 'DESC')->paginate(8);
         
        return view('site.home.index',compact('products'));
     }

@@ -22,6 +22,14 @@
                             <textarea  class="form-control" name="description"></textarea>
                        </div>
 
+                       <div class="inputs">
+                            <label for="exampleFormControlSelect3">Status</label>
+                            <select name="type" class="form-control" id="exampleFormControlSelect3">
+                                <option value="ativo" selected>ativo</option>
+                                <option value="inativo">inativo</option>
+                            </select>
+                        </div>
+
 
                        <div class="inputs">
                         <label for="exampleFormControlSelect1">Selecione o status</label>

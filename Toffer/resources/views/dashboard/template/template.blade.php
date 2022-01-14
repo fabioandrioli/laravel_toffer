@@ -9,24 +9,26 @@
             <ul>
                 <li> <a href="{{route('dataClient')}}"><i class="fas fa-digital-tachograph fa-2x"></i>Meus Dados</a></li>
                 <hr>
-                <li> <a href="{{route('clients')}}"><i class="fa fa-user fa-2x"></i> Clientes</a></li>
-                <hr>
-                <li><a href="#"><i class="fas fa-boxes fa-2x"></i> Pedidos</a></li>
-                <hr>
-                <li><a href="{{route('product')}}"><i class="fas fa-box fa-2x"></i> Produtos</a></li>
-                <hr>
-                <li><a href="{{route('category')}}"><i class="fas fa-th fa-2x"></i> Categorias</a></li>
-                <hr>
-                <li><a href="#"><i class="fas fa-th-large fa-2x"></i> SubCategoria</a></li>
-                <hr>
-                <li><a href="#"><i class="fas fa-money-bill-wave fa-2x"></i> Vendas</a></li>
-                <hr>
-                <li><a href="#"><i class="fas fa-shopping-bag fa-2x"></i> Gastos</a></li>
-                <hr>
-                <li><a href="#"><i class="fas fa-chart-bar fa-2x"></i> Estatísticas</a></li>
-                <hr>
-                <li><a href="{{route("doubt")}}"><i class="fas fa-bullhorn fa-2x"></i> Perguntas</a></li>
-                <hr>
+                @can("cliente")
+                    <li> <a href="{{route('clients')}}"><i class="fa fa-user fa-2x"></i> Clientes</a></li>
+                    <hr>
+                    <li><a href="{{route('order')}}"><i class="fas fa-boxes fa-2x"></i> Pedidos</a></li>
+                    <hr>
+                    <li><a href="{{route('product')}}"><i class="fas fa-box fa-2x"></i> Produtos</a></li>
+                    <hr>
+                    <li><a href="{{route('category')}}"><i class="fas fa-th fa-2x"></i> Categorias</a></li>
+                    <hr>
+                    <li><a href="#"><i class="fas fa-th-large fa-2x"></i> SubCategoria</a></li>
+                    <hr>
+                    <li><a href="#"><i class="fas fa-money-bill-wave fa-2x"></i> Vendas</a></li>
+                    <hr>
+                    <li><a href="#"><i class="fas fa-shopping-bag fa-2x"></i> Gastos</a></li>
+                    <hr>
+                    <li><a href="#"><i class="fas fa-chart-bar fa-2x"></i> Estatísticas</a></li>
+                    <hr>
+                    <li><a href="{{route("doubt")}}"><i class="fas fa-bullhorn fa-2x"></i> Perguntas</a></li>
+                    <hr>
+                @endcan
             </ul>
         </div>
         <div class="dashboard__body">

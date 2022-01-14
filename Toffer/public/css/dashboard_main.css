@@ -161,3 +161,147 @@ main{
     font-size:19px;
 }
 
+.card__order{
+    width:100%;
+}
+
+.card__order___header{
+    width:100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn_order{
+    border-radius: 11px;
+    padding: 10px;
+    font-weight:bold;
+    text-decoration: none;
+    color:black;
+    -webkit-border-radius: 11px;
+    -moz-border-radius: 11px;
+    -ms-border-radius: 11px;
+    -o-border-radius: 11px;
+    box-shadow: 1px 1px 2px black, 0 0 10px #376295, 0 0 5px darkblue;
+}
+
+.btn_order.active{
+    box-shadow: 1px 1px 2px black, 0 0 30px #376295, 0 0 5px darkblue;
+}
+
+.mostard{
+    background:#F0E04B;
+}
+
+.verde-escuro{
+    background:#11C8BD;
+}
+
+.verde-claro{
+    background:#2ADD51;
+}
+
+.bordo{
+    background:#E85D5D;
+}
+
+.morrom-estranho{
+    background:#D79619;
+}
+
+.btn_order:hover{
+    color:white;
+    box-shadow: 1px 1px 2px black, 0 0 30px #376295, 0 0 5px darkblue;
+}
+
+.order__card___search{
+    margin:30px;
+}
+
+.order__card___search form{
+    display:flex;
+    justify-content:center;
+}
+
+.search-order{
+    width: 70%;
+   
+}
+
+.search-order:focus{
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+}
+
+.order__card___search form button{
+    margin-left: -10px;
+    border-radius: 0 10px 10px 0;
+    -webkit-border-radius: 0 10px 10px 0;
+    -moz-border-radius: 0 10px 10px 0;
+    -ms-border-radius: 0 10px 10px 0;
+    -o-border-radius: 0 10px 10px 0;
+}
+
+.card__order figure{
+    width: 100%;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.card__order figure .situation{
+    display:flex;
+    justify-content:flex-start;
+    flex-wrap:wrap;
+}
+
+.text-situation{
+    font-size: 14px;
+    text-align: center;
+    padding: 30px;
+    border-radius: 11px;
+    -webkit-border-radius: 11px;
+    -moz-border-radius: 11px;
+    -ms-border-radius: 11px;
+    -o-border-radius: 11px;
+}
+
+.order-text-price{
+    width: 100%;
+    color:#149211;
+    font-size:25px;
+    font-weight: bold;
+}
+
+.card__order__action{
+    width: 100%;
+    display: flex;
+    justify-content:flex-end;
+}
+
+.card__order__action .btn-order-next-status{
+   margin-right: 10px;
+   text-decoration: none;
+   padding: 10px;
+   border-radius: 11px;
+   -webkit-border-radius: 11px;
+   -moz-border-radius: 11px;
+   -ms-border-radius: 11px;
+   -o-border-radius: 11px;
+   color:white;
+}
+
+.card__order__action .btn-order-next-status:hover{
+    color:white;
+    box-shadow: 1px 1px 2px black, 0 0 30px #376295, 0 0 5px black;
+ }
+ 
+
+
+
+
+

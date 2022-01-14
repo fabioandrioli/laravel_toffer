@@ -25,6 +25,7 @@ class Product extends Model
         'observacao',
     ];
 
+
     public function category(){
         return $this->belongsTo(Category::class);
     }
@@ -35,5 +36,12 @@ class Product extends Model
 
     public function specifications(){
         return $this->hasMany(Specification::class);
+    }
+
+    public function search($filter = null){
+        return $results = $this
+                    ->where('name','LIKE',"%{$filter}%")
+                    ->orWhere('description','LIKE',"%{$filter}%")
+                    ->paginate();
     }
 }

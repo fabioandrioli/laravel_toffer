@@ -46,14 +46,16 @@
                             <select name="type" class="form-control" id="exampleFormControlSelect2">
                                 <option value="{{$product->type}}" selected>{{$product->type}}</option>
                                 <option value="kg">KG</option>
+                                <option value="kg">Unidade</option>
                             </select>
                         </div>
 
                         <div class="inputs">
                             <label for="exampleFormControlSelect3">Status</label>
-                            <select name="type" class="form-control" id="exampleFormControlSelect3">
+                            <select name="status" class="form-control" id="exampleFormControlSelect3">
                                 <option value="{{$product->status}}" selected>{{$product->status}}</option>
-                                <option value="Inativo">Inativo</option>
+                                <option value="ativo">ativo</option>
+                                <option value="inativo">inativo</option>
                             </select>
                         </div>
 

@@ -16,7 +16,33 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::where("situation","waiting")->orderBy('id', 'DESC')->paginate(10);
+        return view("dashboard.order.index",compact("orders"));
+    }
+
+
+    public function delivery()
+    {
+        $orders = Order::where("situation","delivery")->orderBy('id', 'DESC')->paginate(10);
+        return view("dashboard.order.delivery",compact("orders"));
+    }
+
+    public function dispatched()
+    {
+        $orders = Order::where("situation","dispatched")->orderBy('id', 'DESC')->paginate(10);
+        return view("dashboard.order.dispatched",compact("orders"));
+    }
+
+    public function exchange()
+    {
+        $orders = Order::where("situation","exchange")->orderBy('id', 'DESC')->paginate(10);
+        return view("dashboard.order.exchange",compact("orders"));
+    }
+
+    public function giveup()
+    {
+        $orders = Order::where("situation","giveup")->orderBy('id', 'DESC')->paginate(10);
+        return view("dashboard.order.giveup",compact("orders"));
     }
 
     /**
