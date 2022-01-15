@@ -94,11 +94,12 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         
-        if(empty($data['password']))
+        if(empty($request->password))
             $data = $request->except('password');
-        else
+        else{
             $data = $request->all();
-        $data['password'] = bcrypt($data['password']);
+            $data['password'] = bcrypt($data['password']);
+        }
         $user = User::find($id);
         $user->update($data);
         return redirect()->route("dashboard.user");

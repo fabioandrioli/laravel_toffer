@@ -13,6 +13,10 @@ use App\Models\Product;
 use App\Models\Cart;
 use App\Models\Doubt;
 use App\Models\Order;
+use Mail;
+use App\Mail\ContactMail;
+use App\Mail\SendPasswordCreateUser;
+use App\Mail\ForgetPasswordMail;
 use Illuminate\Support\Facades\Date;
 
 use Illuminate\Support\Facades\Session;
@@ -63,6 +67,9 @@ class SiteController extends Controller
         $products = $cart->getItems();
         $preference = $this->mercadoPago($products);
         return view('site.home.cart',compact('preference','cart','products'));
+    }
+
+   
     }
 
     public function payment(){
@@ -175,6 +182,50 @@ class SiteController extends Controller
         Doubt::create();
         session(['message' => 'Sua duvida foi enviada com sucesso']);
         return redirect()->back();
+    }
+
+
+    public function forgetPasswordForm(){
+        return view('site.user_guest.forgetPassword');
+    }
+
+    public function forgetEmailStore(Request $request){
+        if(!Auth::check()){
+            $dataGuestUser = $request;
+            $user = $this->user->where('email',$dataGuestUser['email'])->first();
+            for ($i=0; $i<7; $i++) {
+                $dataGuestUser['password'] = $dataGuestUser['password']. chr(rand(65,90));
+            }
+            $dataGuestUser['senha'] = $dataGuestUser['password'];
+            $dataGuestUser['password'] = bcrypt($dataGuestUser['password']);
+            if($user->update([
+                'password' => $dataGuestUser['password']
+            ])){
+                Mail::to($dataGuestUser['email'])->send(new ForgetPasswordMail( $dataGuestUser['senha']));
+                return redirect()->route('site.login');
+            }else{
+                return redirect()->route('site.forgetPasswordForm')->withErrors('Algo deu errado, entre em contado com o suporte')->withInput();
+            }
+        }else{
+            redirect()->route('site.login');
+        }
+
+    public function contacts(){
+        return view('site.user_guest.contacts');
+    }
+
+    public function contactStore(EmailResquest $request){
+        $data = $request->all();
+        Mail::to('fabio.drioli@gmail.com')->send(new ContactMail($data));
+        return redirect()->route('site.contacts');
+
+        // Mail::send('site.email_site_contact', $data, function($message) use ($data) {
+        //     $message->from($data['email'], $data['nome']);
+        //     $message->to('fabio.tads15@gmail.com') ->subject($data['assunto']);
+        // });
+
+        return redirect()->route('site.contacts');
+
     }
 
 }

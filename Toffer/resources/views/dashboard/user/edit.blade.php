@@ -24,7 +24,7 @@
                                 <option value="cliente">cliente</option>
                                 <option value="administrador">administrador</option>
                                 @can("webmaster")
-                                <option value="administrador">webmaster</option>
+                                <option value="webmaster">webmaster</option>
                                 @endcan
                             </select>
                         </div>
