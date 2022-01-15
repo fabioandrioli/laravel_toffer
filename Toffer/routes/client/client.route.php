@@ -4,6 +4,7 @@
     use App\Http\Controllers\Web\V1\{
         ClientController,
     };
+    
 
     Route::get('/dataClient', [ClientController::class, 'index'])->name('dataClient');
     Route::get('/editClient', [ClientController::class, 'editClient'])->name('editClient');

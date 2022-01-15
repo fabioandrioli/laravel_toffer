@@ -3,7 +3,7 @@
 @section('body')
         
         <div class="dashboard__header"> 
-            <h4>Todos os usuários</h4>
+            <h4>Clientes</h4>
             <a class="btn btn-info" href="">Novo +</a>
         </div>
         <hr>
@@ -13,7 +13,6 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">Papel</th>
                     <th scope="col">Email</th>
                     <th scope="col">Telefone</th>
                     <th class="action">Ações</th>
@@ -24,19 +23,17 @@
                 <tr>
                     <th scope="row">{{$user->id}}</th>
                     <td>{{$user->name}}</td>
-                    <td>{{$user->role}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->phone}}</td>
                     <td class="action">
                         <button-detail id="{{$user->id}}"></button-detail>
-                        <a class="btn btn-info" href="{{route("user.edit",$user->id)}}"><i class="fa fa-edit"></i></a>
-                        <a class="btn btn-warning" href="{{route("user.ban",$user->id)}}"><i class="fas fa-ban"></i></a>
-                        <a class="btn btn-danger" href="{{route("user.delete",$user->id)}}"><i class="fas fa-trash"></i></a>
+                        <a class="btn btn-warning" href=""><i class="fa fa-edit"></i></a>
+                        <a class="btn btn-danger" href=""><i class="fas fa-ban"></i></a>
                     </td>
                 </tr>
                 @empty
                 <tr>
-                    <td>Nenhum usuário encontrado.</td>
+                    <td>Nenhum cliente encontrado.</td>
                 </tr>
                 @endforelse
                 </tbody>
@@ -48,7 +45,7 @@
             <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Detalhes do usuário</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Detalhes do cliente</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

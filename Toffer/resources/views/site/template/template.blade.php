@@ -36,9 +36,10 @@
                             <li><p  class="menu__item">Olá, {{ explode(' ',trim(Auth::user()->name))[0] }} Seja bem vindo!</p></li>
                         @endguest
                     </ul>
-                    <form class="menu__search">
-                        <input class="menu__input" type="text" placeholder="Buscar produto"/>
-                        <button type="button" class="menu__button"><i class="fas fa-search"></i></button>
+                    <form class="menu__search" method="post" action="{{route("site.search")}}">
+                        @csrf
+                        <input class="menu__input" name="filter"  value="{{$filters['filter'] ?? ''}}"  type="text" placeholder="Buscar produto"/>
+                        <button type="submit" class="menu__button"><i class="fas fa-search"></i></button>
                     </form>
                     <ul>
                         <li> <a class="menu__item cart" href="{{route('site.cart')}}"><i class="fas fa-shopping-cart fa-2x"></i></li>
@@ -74,16 +75,15 @@
         <footer>
             <div class="container__toffer footer">
                 <ul>
-                    <li>Entre em contato</li>
-                    <li>Perguntas frequentes</li>
+                    {{-- <li>Entre em contato</li>
+                    <li>Perguntas frequentes</li> --}}
                 </ul>
                 <ul>
-                    <li>Entre em contato</li>
-                    <li>Perguntas frequentes</li>
+                    <li>Todos os direitos reservados <i class="fa fa-copyright" aria-hidden="true"></i>copyright</li>
                 </ul>
                 <ul>
-                    <li>Entre em contato</li>
-                    <li>Perguntas frequentes</li>
+                    {{-- <li>Entre em contato</li>
+                    <li>Perguntas frequentes</li> --}}
                 </ul>
             </div>
         </footer>

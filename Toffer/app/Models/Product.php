@@ -40,8 +40,8 @@ class Product extends Model
 
     public function search($filter = null){
         return $results = $this
-                    ->where('name','LIKE',"%{$filter}%")
+                    ->where('title','LIKE',"%{$filter}%")
                     ->orWhere('description','LIKE',"%{$filter}%")
-                    ->paginate();
+                    ->paginate(8);
     }
 }

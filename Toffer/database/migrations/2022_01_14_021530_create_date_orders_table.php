@@ -16,7 +16,7 @@ class CreateDateOrdersTable extends Migration
         Schema::create('date_orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('order_id');
-            $table->foreign('order_id')->references('id')->on('order');
+            $table->foreign('order_id')->references('id')->on('orders');
             $table->string("description");
             $table->date("data");
             $table->timestamps();

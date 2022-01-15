@@ -24,6 +24,7 @@ class ClientController extends Controller
         return view("dashboard.client.index",compact("user"));
     }
 
+
     public function editClient(){
         $user = Auth::user();
         return view("dashboard.client.edit",compact("user"));
@@ -58,4 +59,6 @@ class ClientController extends Controller
         $user->update($data);
         return redirect()->route("dataClient");
     }
+
+    
 }

@@ -10,7 +10,7 @@ class Order extends Model
     use HasFactory;
     protected $fillable = [];
 
-    public function dates(){
-        return $this->hasMany(DataOrder::class);
+    public function dateOrder(){
+        return $this->hasMany(DateOrder::class,"order_id");
     }
 }

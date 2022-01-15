@@ -6,9 +6,15 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class OrderController extends Controller
 {
+
+    public function __construct()
+    {
+        // Order::with('orderItems')->where('orderItems.type',1)->with('orderItems.orderItemOptions', 'orderItems.orderMenuItems')->first()
+    }
     /**
      * Display a listing of the resource.
      *
@@ -44,6 +50,58 @@ class OrderController extends Controller
         $orders = Order::where("situation","giveup")->orderBy('id', 'DESC')->paginate(10);
         return view("dashboard.order.giveup",compact("orders"));
     }
+
+
+    public function waiting($id){
+        $order = Order::find($id);
+        $order->situation = "waiting";
+        $log["description"] =  $order->situation;
+        $log["data"] = Carbon::now();
+        $order->dateOrder()->create($log);
+        $order->save();
+        return redirect()->back();
+    }
+
+    public function delivery_exchange($id){
+        $order = Order::find($id);
+        $order->situation = "delivery";
+        $log["description"] =  $order->situation;
+        $log["data"] = Carbon::now();
+        $order->dateOrder()->create($log);
+        $order->save();
+        return redirect()->back();
+    }
+
+    public function dispatched_exchange($id){
+        $order = Order::find($id);
+        $order->situation = "dispatched";
+        $log["description"] =  $order->situation;
+        $log["data"] = Carbon::now();
+        $order->dateOrder()->create($log);
+        $order->save();
+        return redirect()->back();
+    }
+
+    public function exchange_exchange($id){
+        $order = Order::find($id);
+        $order->situation = "exchange";
+        $log["description"] =  $order->situation;
+        $log["data"] = Carbon::now();
+        $order->dateOrder()->create($log);
+        $order->save();
+        return redirect()->back();
+    }
+
+    public function giveup_exchange($id){
+        $order = Order::find($id);
+        $order->situation = "giveup";
+        $log["description"] =  $order->situation;
+        $log["data"] = Carbon::now();
+        $order->dateOrder()->create($log);
+        $order->save();
+        return redirect()->back();
+    }
+
 
     /**
      * Show the form for creating a new resource.

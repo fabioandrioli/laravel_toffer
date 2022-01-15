@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class DateOrder extends Model
 {
     use HasFactory;
+    protected $fillable = ["description","order_id","data"];
 }

@@ -10,7 +10,9 @@
                 <li> <a href="{{route('dataClient')}}"><i class="fas fa-digital-tachograph fa-2x"></i>Meus Dados</a></li>
                 <hr>
                 @can("cliente")
-                    <li> <a href="{{route('clients')}}"><i class="fa fa-user fa-2x"></i> Clientes</a></li>
+                    <li> <a href="{{route('dashboard.clients')}}"><i class="fa fa-user fa-2x"></i> Clientes</a></li>
+                    <hr>
+                    <li> <a href="{{route('dashboard.user')}}"><i class="fas fa-users fa-2x"></i> Usuários</a></li>
                     <hr>
                     <li><a href="{{route('order')}}"><i class="fas fa-boxes fa-2x"></i> Pedidos</a></li>
                     <hr>

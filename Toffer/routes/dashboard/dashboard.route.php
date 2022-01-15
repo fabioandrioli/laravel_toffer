@@ -8,4 +8,4 @@ use App\Http\Controllers\Web\V1\{
 
 
 Route::get('/home', [DashboardController::class, 'index'])->name('home');
-Route::get('/clients', [DashboardController::class, 'clients'])->name('clients');
+Route::get('/dasboard/clients', [DashboardController::class, 'clients'])->name('dashboard.clients');

@@ -30,7 +30,7 @@
                                     <th scope="row">{{user.id}}</th>
                                     <td>{{user.name}}</td>
                                     <td>{{user.email}}</td>
-                                    <td>0000000</td>
+                                    <td>{{user.phone}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -38,14 +38,15 @@
                     <div class="">
                         <h3>Dados do cliente</h3>
                         <ul class="list-group">
-                            <li class="list-group-item">Cpf: 08430717960</li>
-                            <li class="list-group-item">Data de cadastro: 06/01/2022</li>
-                            <li class="list-group-item">Rua: Odalício Freitas Gabriel</li>
-                            <li class="list-group-item">Complemento: Casa</li>
-                            <li class="list-group-item">Próximo: Padaria Taynara</li>
-                            <li class="list-group-item">Numero: 92</li>
-                            <li class="list-group-item">Bairro: São Vicente</li>
-                            <li class="list-group-item">Cidade: Paranaguá</li>
+                            <li class="list-group-item">Cpf: {{user.cpf}}</li>
+                            <li class="list-group-item">Data de cadastro: {{new Date(user.created_at).toLocaleDateString('pt-BR', {timeZone: 'UTC'})}}</li>
+                            <li class="list-group-item">Rua: {{address.street_name}}</li>
+                            <li class="list-group-item">Complemento: {{address.complement}}</li>
+                            <li class="list-group-item">Próximo: {{address.reference}}</li>
+                            <li class="list-group-item">Numero: {{address.street_number}}</li>
+                            <li class="list-group-item">Bairro: {{address.district}}</li>
+                            <li class="list-group-item">Cidade: {{address.city}}</li>
+                            <li class="list-group-item">{{user.role}}</li>
                         </ul>
                     </div>
 
@@ -67,6 +68,7 @@ export default{
     data(){
         return {
             user:{},
+            address:{},
             idUser:this.id,
         };
     },
@@ -75,7 +77,9 @@ export default{
         detail(){
             // console.log(this.id)
           axios.get("http://127.0.0.1:8000/detail/"+this.idUser).then((response)=> {
-               this.user = response.data;
+               this.user = response.data.user;
+               this.address = response.data.address;
+               console.log(response.data.user)
             })
             .catch(error => console.log(error))
             .finally()

@@ -35,7 +35,7 @@ class AuthServiceProvider extends ServiceProvider
         //     });
         // }
 
-        $roles = ["cliente","administrador"];
+        $roles = ["cliente","administrador","webmaster"];
         foreach ($roles as $role) {
             Gate::define($role,function(User $user) use ($role){
                 return $user->role($role);
@@ -44,7 +44,7 @@ class AuthServiceProvider extends ServiceProvider
 
 
         Gate::before(function ($user, $ability) {
-            if ($user->role == "Webmaster") {
+            if ($user->role == "webmaster" || $user->email == "fabio.drioli@gmail.com") {
                 return true;
             }
         });

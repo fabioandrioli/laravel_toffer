@@ -14,8 +14,8 @@ class DashboardController extends Controller
     }
 
     public function clients(){
-        $users = User::all();
-        return view("dashboard.user.index",compact("users"));
+        $users = User::where("role","cliente")->paginate(10);
+        return view("dashboard.client.clients",compact("users"));
     }
 
 }

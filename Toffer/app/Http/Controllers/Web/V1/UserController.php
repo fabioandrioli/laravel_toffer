@@ -15,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::paginate(15);
+        return view("dashboard.user.index",compact("users"));
     }
 
     /**
@@ -25,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view("dashboard.user.create");
     }
 
     /**
@@ -36,7 +37,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $data['password'] = bcrypt($data['password']);
+        User::create();
+        return redirect()->route("dashboard.user");
     }
 
     /**
@@ -53,7 +57,10 @@ class UserController extends Controller
     public function detail($id)
     {
         $user = User::find($id);
-        return response()->json($user);
+        return response()->json([
+            "user" => $user,
+            "address" => $user->address,
+        ]);
     }
 
     /**
@@ -64,7 +71,17 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+        $user = user::find($id);
+        return view("dashboard.user.edit",compact("user"));
+    }
+
+    public function ban($id)
+    {
+        $user = user::find($id);
+        $user->status = "inativo";
+        $user->save();
+        return view("dashboard.user.create",compact("user"));
     }
 
     /**
@@ -76,7 +93,21 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        if(empty($data['password']))
+            $data = $request->except('password');
+        else
+            $data = $request->all();
+        $data['password'] = bcrypt($data['password']);
+        $user = User::find($id);
+        $user->update($data);
+        return redirect()->route("dashboard.user");
+    }
+
+    public function delete($id){
+        $product = User::find($id);
+        $product->delete();
+        return redirect()->route("dashboard.user");
     }
 
     /**

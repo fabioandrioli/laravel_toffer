@@ -22,11 +22,23 @@ use MercadoPago;
 
 class SiteController extends Controller
 {
+    private $product;
+    public function __construct(Product $product)
+    {
+        $this->product = $product;
+    }
+
     public function index(){
         
       $products = Product::where("status","ativo")->orderBy('id', 'DESC')->paginate(8);
         
        return view('site.home.index',compact('products'));
+    }
+
+    public function search(Request $request){
+        $filters = $request->except('_token');
+        $products = $this->product->search($request->filter);
+        return view('site.home.index',compact('products','filters'));
     }
 
     public function show($id){

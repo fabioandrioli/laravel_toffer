@@ -34,7 +34,11 @@
                     <a href="{{route('editClient')}}" class="btn btn-success">Editar dados <a/>
                 </div>
                 <div class="col-4 ">
-                    <a href="{{route('editAddress')}}" class="btn btn-primary" style="color:white">Editar endereço <a/>
+                    @if(Auth()->user()->address)
+                         <a href="{{route('editAddress')}}" class="btn btn-primary" style="color:white">Editar endereço <a/>
+                    @else
+                        <a href="{{route('address')}}" class="btn btn-primary" style="color:white">Cadastrar endereço <a/>
+                    @endif
                 </div>
                 <div class="col-4 ">
                     <a href="{{route('editPassword')}}" class="btn btn-primary" style="background:#376295; color:white">Mudar senha </a>

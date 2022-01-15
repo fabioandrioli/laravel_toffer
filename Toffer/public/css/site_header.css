@@ -107,7 +107,7 @@ p.menu__item{
   margin-left: -5px;
   width: 50px;
   position: relative;
-  top: 1px;
+  top: 0.7px;
 }
 
 .menu__button:hover {
