@@ -5308,7 +5308,7 @@ __webpack_require__.r(__webpack_exports__);
     confirme: function confirme() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://127.0.0.1:8000/product/confirmeDelete/" + this.id).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://fabiogilberto.com.br/product/confirmeDelete/" + this.id).then(function (response) {
         _this.produto = response.data.product;
         console.log(response.data.product.title);
       })["catch"](function (error) {
@@ -5316,7 +5316,7 @@ __webpack_require__.r(__webpack_exports__);
       })["finally"]();
     },
     deletar: function deletar() {
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://127.0.0.1:8000/product/delete/" + this.id).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://fabiogilberto.com.br/product/delete/" + this.id).then(function (response) {
         window.location.href = "/product";
       })["catch"](function (error) {
         return console.log(error);
@@ -5417,7 +5417,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       // console.log(this.id)
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://127.0.0.1:8000/detail/" + this.idUser).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://fabiogilberto.com.br/detail/" + this.idUser).then(function (response) {
         _this.user = response.data.user;
         _this.address = response.data.address;
         console.log(response.data.user);

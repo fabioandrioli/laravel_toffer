@@ -68,7 +68,7 @@ class ProductController extends Controller
 
             $nameImage = uniqid(date('YmdHis')).'.'.$image->getClientOriginalExtension();
 
-            $upload = $image->storeAs('public/products',$nameImage);
+            $upload = $image->storeAs('/products',$nameImage,'public_folder');
             $data['image'] = $nameImage;
         }
 
@@ -146,7 +146,7 @@ class ProductController extends Controller
 
            $nameImage = uniqid(date('YmdHis')).'.'.$image->getClientOriginalExtension();
 
-           $upload = $image->storeAs('public/products',$nameImage);
+           $upload = $image->storeAs('/products',$nameImage,'public_folder');
            
            $data['image'] = $nameImage;
        }

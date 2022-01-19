@@ -43,7 +43,7 @@ export default{
 
     methods: {
         confirme(){       
-          axios.get("http://127.0.0.1:8000/product/confirmeDelete/"+this.id).then((response)=> {
+          axios.get("http://fabiogilberto.com.br/product/confirmeDelete/"+this.id).then((response)=> {
                this.produto = response.data.product;
                console.log(response.data.product.title)
             })
@@ -52,7 +52,7 @@ export default{
         },
 
         deletar(){
-              axios.get("http://127.0.0.1:8000/product/delete/"+this.id).then((response)=> {
+              axios.get("http://fabiogilberto.com.br/product/delete/"+this.id).then((response)=> {
                 window.location.href = "/product";
             })
             .catch(error => console.log(error))

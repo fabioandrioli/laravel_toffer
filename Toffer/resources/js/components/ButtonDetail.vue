@@ -76,7 +76,7 @@ export default{
     methods: {
         detail(){
             // console.log(this.id)
-          axios.get("http://127.0.0.1:8000/detail/"+this.idUser).then((response)=> {
+          axios.get("http://fabiogilberto.com.br/detail/"+this.idUser).then((response)=> {
                this.user = response.data.user;
                this.address = response.data.address;
                console.log(response.data.user)
