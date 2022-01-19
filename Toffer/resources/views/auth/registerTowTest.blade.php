@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('site.template.template')
 
 @section('content')
 <div class="container container-toffer">
