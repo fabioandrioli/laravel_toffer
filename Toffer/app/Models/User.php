@@ -57,4 +57,12 @@ class User extends Authenticatable implements MustVerifyEmailContract
         
         return true;//$this->user->role == $role;
     }
+
+    
+    public function search($filter = null){
+        return $results = $this
+                    ->where('name','LIKE',"%{$filter}%")
+                    ->orWhere('email','LIKE',"%{$filter}%")
+                    ->paginate(8);
+    }
 }

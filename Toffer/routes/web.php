@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 require "site/site.route.php";
 require "cart/cart.route.php";
 require "webhook/webhook.route.php";
+require "email/email.router.php";
 
 //Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'],function(){
 Route::group(['middleware' => 'verified'],function(){

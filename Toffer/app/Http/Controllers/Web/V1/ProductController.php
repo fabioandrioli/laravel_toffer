@@ -12,6 +12,13 @@ use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
+
+    private $product;
+
+    public function __construct(Product $product)
+    {
+        $this->product = $product;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -22,6 +29,13 @@ class ProductController extends Controller
         $products = Product::orderBy('id', 'DESC')->paginate(8);
         return view('dashboard.product.index',compact('products'));
     }
+
+    public function search(Request $request){
+        $filters = $request->except('_token');
+        $products = $this->product->search($request->filter);
+        return view('dashboard.product.index',compact('products','filters'));
+    }
+
 
     /**
      * Show the form for creating a new resource.

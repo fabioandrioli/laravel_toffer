@@ -9,6 +9,8 @@ use Illuminate\Queue\SerializesModels;
 
 class ContactEmail extends Mailable
 {
+
+    protected $inputs;
     use Queueable, SerializesModels;
 
     /**
@@ -16,9 +18,9 @@ class ContactEmail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($inputs)
     {
-        //
+        $this->inputs = $inputs;
     }
 
     /**
@@ -28,6 +30,8 @@ class ContactEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('emails.email_site_contact')->with([
+            'data' => $this->inputs,
+        ])->subject($this->inputs['subject']);
     }
 }

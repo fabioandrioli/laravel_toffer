@@ -5,7 +5,9 @@
 @section('content')
 <main>
     <div class="container contact-form">
-        <form method="post">
+        <form method="post" action="{{route("email.contact")}}">
+            @csrf
+            @include('site.home.includes.message')
             <h3>Fale conosco, tire suas dúvidas.</h3>
            <div class="row">
                 <div class="col-md-6">

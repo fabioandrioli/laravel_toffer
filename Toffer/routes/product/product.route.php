@@ -10,6 +10,7 @@ use App\Http\Controllers\Web\V1\{
 Route::get("/product", [ProductController::class, 'index'])->name('product');
 Route::get("/product/create", [ProductController::class, 'create'])->name('product.create');
 Route::post("/product/store", [ProductController::class, 'store'])->name('product.store');
+Route::post("/product/search", [ProductController::class, 'search'])->name('product.search');
 Route::get("/product/confirmeDelete/{id}", [ProductController::class, 'confirmeDeleteProduct'])->name('product.confirm');
 Route::get("/product/delete/{id}", [ProductController::class, 'delete'])->name('product.delete');
 Route::get("/product/edit/{id}", [ProductController::class, 'editar'])->name('product.editar');

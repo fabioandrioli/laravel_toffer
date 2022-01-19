@@ -5,6 +5,11 @@
   
         <div class="dashboard__header"> 
             <h4>Produtos</h4>
+            <form class="menu__search" method="post" action="{{route("product.search")}}">
+                @csrf
+                <input class="menu__input" name="filter"  value="{{$filters['filter'] ?? ''}}"  type="text" placeholder="Buscar produtos"/>
+                <button type="submit" class="menu__button"><i class="fas fa-search"></i></button>
+            </form>
             <a class="btn btn-info" href="{{route('product.create')}}">Novo +</a>
         </div>
      

@@ -13,4 +13,12 @@ class Order extends Model
     public function dateOrder(){
         return $this->hasMany(DateOrder::class,"order_id");
     }
+
+    
+    public function search($filter = null){
+        return $results = $this
+                    ->where('situation','LIKE',"%{$filter}%")
+                    ->orWhere('status','LIKE',"%{$filter}%")
+                    ->paginate(8);
+    }
 }

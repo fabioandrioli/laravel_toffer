@@ -8,6 +8,12 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+    private $user;
+
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,6 +23,12 @@ class UserController extends Controller
     {
         $users = User::paginate(15);
         return view("dashboard.user.index",compact("users"));
+    }
+
+    public function search(Request $request){
+        $filters = $request->except('_token');
+        $users = $this->user->search($request->filter);
+        return view('dashboard.user.index',compact('users','filters'));
     }
 
     /**
