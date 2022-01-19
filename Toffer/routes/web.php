@@ -18,7 +18,7 @@ require "cart/cart.route.php";
 require "webhook/webhook.route.php";
 
 //Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'],function(){
-Route::group(['middleware' => 'auth'],function(){
+Route::group(['middleware' => 'verified'],function(){
   
         require "site/site.auth.route.php";
         require "user/user.route.php";

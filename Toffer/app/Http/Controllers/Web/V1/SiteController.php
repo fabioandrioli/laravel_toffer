@@ -101,13 +101,13 @@ class SiteController extends Controller
 
     private function mercadoPago($product){
 
-        if(!Auth::check()){
-            return redirect()->route("login");
-        }
+        // if(!Auth::check()){
+        //     return redirect()->route("login");
+        // }
 
-        if (!Gate::allows('email_verify')) {
-            return view("site.home.verifyEmail");
-        }
+        // if (!Gate::allows('email_verify')) {
+        //     return view("site.home.verifyEmail");
+        // }
     
         SDK::setAccessToken(config('services.mercadopago.token'));
 

@@ -25,60 +25,46 @@ class ClientController extends Controller
      */
     public function index()
     {
-        if (!Gate::allows('email_verify')) {
-            return view("site.home.verifyEmail");
-        }
+        
         $user = Auth::user();
         return view("dashboard.client.index",compact("user"));
     }
 
 
     public function editClient(){
-        if (!Gate::allows('email_verify')) {
-            return view("site.home.verifyEmail");
-        }
+      
         $user = Auth::user();
         return view("dashboard.client.edit",compact("user"));
     }
 
     public function updateClient(Request $request){
-        if (!Gate::allows('email_verify')) {
-            return view("site.home.verifyEmail");
-        }
+       
         $user = Auth::user();
         $user->update($request->all());
         return redirect()->route("dataClient");
     }
 
     public function editAddress(){
-        if (!Gate::allows('email_verify')) {
-            return view("site.home.verifyEmail");
-        }
+       
         $user = Auth::user();
         return view("dashboard.client.address",compact("user"));
     }
 
     public function updateAddress(Request $request){
-        if (!Gate::allows('email_verify')) {
-            return view("site.home.verifyEmail");
-        }
+      
         $user = Auth::user();
         $user->address()->update($request->all());
         return redirect()->route("dataClient");
     }
 
     public function editPassword(){
-        if (!Gate::allows('email_verify')) {
-            return view("site.home.verifyEmail");
-        }
+        
         $user = Auth::user();
         return view("dashboard.client.password",compact("user"));
     }
 
     public function updatePassword(Request $request){
-        if (!Gate::allows('email_verify')) {
-            return view("site.home.verifyEmail");
-        }
+       
         $user = Auth::user();
         $data = $request->all();
         $data['password'] = bcrypt($data['password']);
