@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class SpecificationController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('can:administrador');
+    }
     /**
      * Display a listing of the resource.
      *

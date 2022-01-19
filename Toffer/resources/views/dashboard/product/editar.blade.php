@@ -74,6 +74,10 @@
                             <input class="form-control" value="{{$product->observacao}}" placeholder="Observação" type="text" id="observacao" name="observacao">
                         </div>
 
+                        <div class="inputs">
+                           <a href="{{route("product.showSpecification",$product->id)}}">Adicionar  especificações</a>
+                        </div>
+
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">

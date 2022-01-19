@@ -211,7 +211,7 @@ class SiteController extends Controller
         $data = $request->all();
         $data['email'] = Auth::user()->email;
         $data['user_id'] = Auth::user()->id;
-        Doubt::create();
+        Doubt::create($data);
         session(['message' => 'Sua duvida foi enviada com sucesso']);
         return redirect()->back();
     }

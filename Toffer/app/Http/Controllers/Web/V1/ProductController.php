@@ -9,6 +9,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Models\Specification;
 
 class ProductController extends Controller
 {
@@ -17,7 +18,9 @@ class ProductController extends Controller
 
     public function __construct(Product $product)
     {
+        $this->middleware('can:administrador');
         $this->product = $product;
+        
     }
     /**
      * Display a listing of the resource.
@@ -92,6 +95,7 @@ class ProductController extends Controller
 
     public function delete($id){
         $product = Product::find($id);
+        Storage::disk('local')->delete('products/'.$product->image);
         $product->delete();
         return redirect()->route("product");
     }
@@ -160,4 +164,40 @@ class ProductController extends Controller
     {
         //
     }
+
+    public function showSpecification($id){
+        $product = Product::find($id);
+        $specifications = $product->specifications;
+        return view("dashboard.specification.index",compact("product","specifications"));
+    }
+
+    public function newSpecification($id){
+        $product = Product::find($id);
+        $specifications = $product->specifications;
+        return view("dashboard.specification.create",compact("product"));
+    }
+
+    public function storeSpecification(Request $request){
+        Specification::create($request->all());
+        return redirect()->route("product.showSpecification",$request->product_id);
+    }
+
+    public function editSpecification($id){
+        $specification = Specification::find($id);
+        return view("dashboard.specification.edit",compact("specification"));
+    }
+
+    public function deleteSpecification($id){
+        $specification =  Specification::find($id);
+        $product = $specification->product;
+        $specification->delete();
+        return redirect()->route("product.showSpecification",$product->id);
+    }
+
+    public function updateSpecification(Request $request, $id){
+        $specification =  Specification::find($id);
+        $specification->update($request->all());
+        return redirect()->route("product.showSpecification",$specification->product->id);
+    }
+
 }

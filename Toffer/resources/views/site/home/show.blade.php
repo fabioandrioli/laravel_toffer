@@ -12,11 +12,11 @@
             <div class="galeria">
                 <div class="title__mobile">Relógio masculino Ligie</div>
                 <img class="card-image" src="{{asset('/image/produto/relogio_3.jpg')}}" alt="">
-               <div class="sub__card">
+               {{-- <div class="sub__card">
                    <a href="#"><img class="sub-card-image active" src="{{asset('/image/produto/relogio_3.jpg')}}" alt=""></a> 
                    <a href="#"><img class="sub-card-image" src="{{asset('/image/produto/relogio_3.jpg')}}" alt=""></a>
                    <a href="#"><img class="sub-card-image" src="{{asset('/image/produto/relogio_3.jpg')}}" alt=""></a>
-               </div>
+               </div> --}}
                 <div class="mobile-image">
                     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
@@ -26,16 +26,15 @@
                         </ol>
                         <div class="carousel-inner">
                           <div class="carousel-item active">
-                            <img src="{{asset('/image/produto/relogio_3.jpg')}}" style="width:100%;" alt="...">
+                            <img class="subimage" src="{{asset('/image/produto/relogio_3.jpg')}}" style="width:100%;" alt="...">
                            
                           </div>
                           <div class="carousel-item">
-                            <img src="{{asset('/image/produto/relogio_3.jpg')}}" style="width:100%;" alt="...">
+                            <img class="subimage" src="{{asset('/image/produto/relogio_3.jpg')}}" style="width:100%;" alt="...">
                             
                           </div>
                           <div class="carousel-item">
-                            <img src="{{asset('/image/produto/relogio_3.jpg')}}" style="width:100%;" alt="...">
-                            
+                            <img class="subimage" src="{{asset('/image/produto/relogio_3.jpg')}}" style="width:100%;" alt="...">
                           </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions" data-slide="prev">
@@ -109,7 +108,7 @@
          </form>
          <hr>
         </section>
-        @isset($product->specifications)
+        @if(isset($product->specifications) && count($product->specifications) > 0)
           <section class="especificacoes">
               <h3>Especificações do produto</h3>
               <div class="table-responsive">
@@ -128,7 +127,7 @@
                   </table>
                 </div>
           </section>
-        @endisset
+        @endif
     </div>
     @else
     <h1>Nenhum produto encontrado</h1>

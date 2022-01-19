@@ -100,6 +100,7 @@
     <script src="{{asset('js/menu.js')}}"></script>
     <script src="https://sdk.mercadopago.com/js/v2"></script>
     <script src="{{asset('js/ckeditor/ckeditor.js')}}"></script>
+    <script src="{{asset('js/image.js')}}"></script>
     @stack('scripts')
     @stack('tinymce')   
 </html>

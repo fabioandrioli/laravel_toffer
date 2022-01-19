@@ -122,7 +122,7 @@ hr{
 .cart__action{
     display:flex;
     flex-direction: column;
-    width:415px;
+    width:400px;
     background:#ffffff;
     height:231px;
     margin-left: 30px;

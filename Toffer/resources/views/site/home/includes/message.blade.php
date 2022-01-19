@@ -10,6 +10,7 @@
 @if(session('message'))
     <div style="width:100%;margin-top:20px;" class="alert alert-success">
         {{session('message')}}
+        @php session()->forget('message');; @endphp
     </div>
 @endif
 

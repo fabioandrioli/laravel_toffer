@@ -54,8 +54,7 @@ class User extends Authenticatable implements MustVerifyEmailContract
     }
 
     public function role($role){
-        
-        return true;//$this->user->role == $role;
+        return Auth()->user()->role == $role;
     }
 
     

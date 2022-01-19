@@ -12,6 +12,7 @@ class UserController extends Controller
 
     public function __construct(User $user)
     {
+        $this->middleware('can:webmaster');
         $this->user = $user;
     }
     /**

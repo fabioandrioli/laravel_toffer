@@ -9,6 +9,10 @@ use App\Models\User;
 
 class DashboardController extends Controller
 {
+    public function __construct(){
+        $this->middleware('can:administrador');
+    }
+
     public function index(){
         return view("dashboard.template.template");
     }

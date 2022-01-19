@@ -14,9 +14,6 @@ class ClientController extends Controller
 
     public function __construct(){
         $this->middleware('can:cliente');
-        
-      
-        
     }
     /**
      * Display a listing of the resource.

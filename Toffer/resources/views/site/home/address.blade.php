@@ -20,38 +20,38 @@
                            <div class="inputs input--street">
                                 <div class="street">
                                     <label for="rua" class="register__text">Rua</label>
-                                    <input id="rua" type="text" placeholder="Nome da rua" class="form-control" name="street_name" value="Odalicio Freitas Gabriel" required autocomplete="street_name" autofocus>
+                                    <input id="rua" type="text" placeholder="Nome da rua" class="form-control" name="street_name"  required autocomplete="street_name" autofocus>
                                 </div>
                                 <div class="number">
                                     <label for="number" class="register__text">Número</label>
-                                    <input id="number" type="number" placeholder="numero" class="form-control" name="street_number" value="92" required autocomplete="street_number" autofocus>
+                                    <input id="number" type="number" placeholder="numero" class="form-control" name="street_number"  required autocomplete="street_number" autofocus>
                                 </div>
                            </div>
     
                            
                            <div class="inputs">
                             <label for="cep" class="register__text">CEP</label>
-                            <input id="cep" type="number" placeholder="CEP - apenas números" class="form-control" name="zip_code" value="8209190" required autocomplete="zip_code" autofocus>
+                            <input id="cep" type="number" placeholder="CEP - apenas números" class="form-control" name="zip_code"  required autocomplete="zip_code" autofocus>
                            </div>
 
                            <div class="inputs">
                             <label for="bairro" class="register__text">Bairro</label>
-                            <input id="bairro" type="text" placeholder="Nome do bairro" class="form-control" name="district" value="São Vicente" required autocomplete="district" autofocus>
+                            <input id="bairro" type="text" placeholder="Nome do bairro" class="form-control" name="district"  required autocomplete="district" autofocus>
                            </div>
 
                            <div class="inputs">
                             <label for="bairro" class="register__text">Complemento</label>
-                            <input id="bairro" type="text" placeholder="Casa, Apartament, etc" class="form-control" name="complement" value="Casa" required autocomplete="district" autofocus>
+                            <input id="bairro" type="text" placeholder="Casa, Apartament, etc" class="form-control" name="complement"  required autocomplete="district" autofocus>
                            </div>
                            
                            <div class="inputs">
                             <label for="bairro" class="register__text">Rerefência</label>
-                            <input id="bairro" type="text" placeholder="Próximo à" class="form-control" name="reference" value="Próximo a padaria taynara" required autocomplete="district" autofocus>
+                            <input id="bairro" type="text" placeholder="Próximo à" class="form-control" name="reference"  required autocomplete="district" autofocus>
                            </div>
 
                            <div class="inputs">
                             <label for="bairro" class="register__text">Descrição da fachada</label>
-                            <input id="bairro" type="text" placeholder="Descreva a frente do seu local de entrega" class="form-control" name="fachada" value="Casa com portão marrom" required autocomplete="district" autofocus>
+                            <input id="bairro" type="text" placeholder="Descreva a frente do seu local de entrega" class="form-control" name="fachada" required autocomplete="district" autofocus>
                            </div>
 
                            <div class="inputs">
@@ -59,6 +59,11 @@
                                 <label  class="register__text" for="exampleFormControlSelect1">Selecione sua cidade (Apenas o litoral)</label>
                                 <select class="form-control" id="exampleFormControlSelect1">
                                   <option>Cidade</option>
+                                  <option>Paranaguá</option>
+                                  <option>Pontal do Paraná</option>
+                                  <option>Matinhos</option>
+                                  <option>Morretes</option>
+                                  <option>Antonina</option>
                                 </select>
                               </div>
                            </div>

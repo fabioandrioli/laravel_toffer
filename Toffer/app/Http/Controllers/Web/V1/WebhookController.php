@@ -11,6 +11,12 @@ use App\Notifications\NotificationPayment;
 
 class WebhookController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('can:administrador');
+    }
+
     public function payment(Request $request){
             $user = User::where("email","fabio.drioli@gmail.com");
             $user->notify(new NotificationPayment());

@@ -13,6 +13,7 @@ class OrderController extends Controller
 
     public function __construct()
     {
+        $this->middleware('can:administrador');
         // Order::with('orderItems')->where('orderItems.type',1)->with('orderItems.orderItemOptions', 'orderItems.orderMenuItems')->first()
     }
     /**

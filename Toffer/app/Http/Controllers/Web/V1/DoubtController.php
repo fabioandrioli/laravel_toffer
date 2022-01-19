@@ -9,6 +9,10 @@ use App\Models\Doubt;
 
 class DoubtController extends Controller
 {
+    public function __construct(){
+        $this->middleware('can:administrador');
+    }
+
     public function index(){
         $doubts = Doubt::orderBy('id', 'DESC')->paginate(8);
         return view("dashboard.doubt.index",compact('doubts'));
