@@ -14,7 +14,7 @@
                         
                        <div class="inputs">
                         <label for="name" class="register__text">Nome  da categoria</label>
-                        <input id="name" value="Relógio vipe" name="name" type="text" placeholder="Nome do produto" class="form-control" required autocomplete="name" autofocus>
+                        <input id="name"  name="name" type="text" placeholder="Nome da categoria" class="form-control" required autocomplete="name" autofocus>
                        </div>
 
                        <div class="inputs">
@@ -23,19 +23,10 @@
                        </div>
 
                        <div class="inputs">
-                            <label for="exampleFormControlSelect3">Status</label>
-                            <select name="type" class="form-control" id="exampleFormControlSelect3">
-                                <option value="ativo" selected>ativo</option>
-                                <option value="inativo">inativo</option>
-                            </select>
-                        </div>
-
-
-                       <div class="inputs">
                         <label for="exampleFormControlSelect1">Selecione o status</label>
                         <select name="status" class="form-control" id="exampleFormControlSelect1">
-                            <option value="ativo" selected>Ativo</option>
-                            <option value="inativo" selected>Inativo</option>
+                            <option value="ativo" selected>ativo</option>
+                            <option value="inativo" selected>inativo</option>
                         </select>
                     </div>
 
