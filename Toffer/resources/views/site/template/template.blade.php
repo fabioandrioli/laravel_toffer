@@ -75,15 +75,19 @@
         <footer>
             <div class="container__toffer footer">
                 <ul>
-                    {{-- <li>Entre em contato</li>
-                    <li>Perguntas frequentes</li> --}}
+                    <li>Entre em contato, clique <a class="link_contact" href="{{route('contact')}}">aqui</a> </li>
+                    {{-- <li>Perguntas frequentes</li> --}}
                 </ul>
                 <ul>
                     <li>Todos os direitos reservados <i class="fa fa-copyright" aria-hidden="true"></i>copyright</li>
                 </ul>
                 <ul>
-                    {{-- <li>Entre em contato</li>
-                    <li>Perguntas frequentes</li> --}}
+                    <li>Siga-nos nas nossas redes sociais</li>
+                    <li>
+                        <a href=""><i class="fab fa-facebook"></i></a>
+                        <a href=""><i class="fab fa-instagram"></i></a>
+                        <a href=""><i class="fab fa-youtube"></i></a>
+                    </li>
                 </ul>
             </div>
         </footer>

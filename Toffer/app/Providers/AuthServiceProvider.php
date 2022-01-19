@@ -27,6 +27,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+
+
+
         // $roles = Role::all();
 
         // foreach ($roles as $role) {
@@ -41,6 +44,10 @@ class AuthServiceProvider extends ServiceProvider
                 return $user->role($role);
             });
         }
+
+        Gate::define("email_verify",function(User $user){
+            return $user->email_verified_at != null;
+        });
 
 
         Gate::before(function ($user, $ability) {

@@ -18,7 +18,7 @@ use App\Mail\ContactMail;
 use App\Mail\SendPasswordCreateUser;
 use App\Mail\ForgetPasswordMail;
 use Illuminate\Support\Facades\Date;
-
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 
 use  MercadoPago\SDK;
@@ -69,7 +69,30 @@ class SiteController extends Controller
         return view('site.home.cart',compact('preference','cart','products'));
     }
 
-   
+    public function forgetPasswordForm(){
+        return view('site.user_guest.forgetPassword');
+    }
+
+    public function forgetEmailStore(Request $request){
+        if(!Auth::check()){
+            $dataGuestUser = $request;
+            $user = $this->user->where('email',$dataGuestUser['email'])->first();
+            for ($i=0; $i<7; $i++) {
+                $dataGuestUser['password'] = $dataGuestUser['password']. chr(rand(65,90));
+            }
+            $dataGuestUser['senha'] = $dataGuestUser['password'];
+            $dataGuestUser['password'] = bcrypt($dataGuestUser['password']);
+            if($user->update([
+                'password' => $dataGuestUser['password']
+            ])){
+                Mail::to($dataGuestUser['email'])->send(new ForgetPasswordMail( $dataGuestUser['senha']));
+                return redirect()->route('site.login');
+            }else{
+                return redirect()->route('site.forgetPasswordForm')->withErrors('Algo deu errado, entre em contado com o suporte')->withInput();
+            }
+        }else{
+            redirect()->route('site.login');
+        }
     }
 
     public function payment(){
@@ -77,6 +100,10 @@ class SiteController extends Controller
     }
 
     private function mercadoPago($product){
+
+        if (!Gate::allows('email_verify')) {
+            return view("site.home.verifyEmail");
+        }
     
         SDK::setAccessToken(config('services.mercadopago.token'));
 
@@ -153,10 +180,11 @@ class SiteController extends Controller
     }
 
     public function redirectUser(){
+
         if(Auth::user()->role == "cliente"){
             return redirect()->route("site.index");
         }else{
-            return redirect()->route("clients");
+            return redirect()->route("dataClient");
         }
     }
 
@@ -184,48 +212,22 @@ class SiteController extends Controller
         return redirect()->back();
     }
 
-
-    public function forgetPasswordForm(){
-        return view('site.user_guest.forgetPassword');
+    public function contact(){
+        return view('site.home.contact');
     }
 
-    public function forgetEmailStore(Request $request){
-        if(!Auth::check()){
-            $dataGuestUser = $request;
-            $user = $this->user->where('email',$dataGuestUser['email'])->first();
-            for ($i=0; $i<7; $i++) {
-                $dataGuestUser['password'] = $dataGuestUser['password']. chr(rand(65,90));
-            }
-            $dataGuestUser['senha'] = $dataGuestUser['password'];
-            $dataGuestUser['password'] = bcrypt($dataGuestUser['password']);
-            if($user->update([
-                'password' => $dataGuestUser['password']
-            ])){
-                Mail::to($dataGuestUser['email'])->send(new ForgetPasswordMail( $dataGuestUser['senha']));
-                return redirect()->route('site.login');
-            }else{
-                return redirect()->route('site.forgetPasswordForm')->withErrors('Algo deu errado, entre em contado com o suporte')->withInput();
-            }
-        }else{
-            redirect()->route('site.login');
-        }
+    // public function contactStore(EmailResquest $request){
+    //     $data = $request->all();
+    //     Mail::to('fabio.drioli@gmail.com')->send(new ContactMail($data));
+    //     return redirect()->route('site.contacts');
 
-    public function contacts(){
-        return view('site.user_guest.contacts');
-    }
+    //     // Mail::send('site.email_site_contact', $data, function($message) use ($data) {
+    //     //     $message->from($data['email'], $data['nome']);
+    //     //     $message->to('fabio.tads15@gmail.com') ->subject($data['assunto']);
+    //     // });
 
-    public function contactStore(EmailResquest $request){
-        $data = $request->all();
-        Mail::to('fabio.drioli@gmail.com')->send(new ContactMail($data));
-        return redirect()->route('site.contacts');
+    //     return redirect()->route('site.contacts');
 
-        // Mail::send('site.email_site_contact', $data, function($message) use ($data) {
-        //     $message->from($data['email'], $data['nome']);
-        //     $message->to('fabio.tads15@gmail.com') ->subject($data['assunto']);
-        // });
-
-        return redirect()->route('site.contacts');
-
-    }
+    // }
 
 }

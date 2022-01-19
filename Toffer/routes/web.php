@@ -19,24 +19,22 @@ require "webhook/webhook.route.php";
 
 //Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'],function(){
 Route::group(['middleware' => 'auth'],function(){
-        
-    require "site/site.auth.route.php";
-    require "user/user.route.php";
-   
-    require "product/product.route.php";
-    require "category/category.route.php";
-    require "client/client.route.php";
-    require "dashboard/dashboard.route.php";
-    require "doubt/doubt.route.php";
-    require "order/order.route.php";
-
+  
+        require "site/site.auth.route.php";
+        require "user/user.route.php";
+        require "product/product.route.php";
+        require "category/category.route.php";
+        require "client/client.route.php";
+        require "dashboard/dashboard.route.php";
+        require "doubt/doubt.route.php";
+        require "order/order.route.php";
 });
 
 Route::get('/welcome',function(){
     return view('auth.registerTowTest');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 // Authentication Routes...
 // Route::get('login', [
 //     'as' => 'login',
