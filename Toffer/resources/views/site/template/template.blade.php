@@ -50,7 +50,7 @@
                             <li> <i style="color:white" class="icone_login fas fa-user fa-2x"></i></li>
                             <li> <a class="menu__item" href="{{ route('login') }}">Login</a></li>
                             <li> <a class="menu__item piper">|</a></li>
-                            <li> <a class="menu__item" href="{{ route('register') }}">inscrever - se</a></li>
+                            <li> <a class="menu__item" href="{{ route('site.form') }}">inscrever - se</a></li>
                         @else
                             <li> <i style="color:white" class="icone_login fas fa-user fa-2x"></i></li>
                             <li> <a class="menu__item" href="{{route('dataClient')}}"> {{ explode(' ',trim(Auth::user()->name))[0] }}</a></li>

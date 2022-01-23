@@ -35,7 +35,7 @@
             </div>
             <div class="product_action">
                 <a class="btn btn-warning" style="color:#fff;" href="{{route('product.editar',$product->id)}}">Edtiar</a>
-                <button-delete product="{{$product->id}}"></button-delete>
+                <button-delete-product product="{{$product->id}}"></button-delete-product>
                 <a class="btn btn-info" style="color:#fff;" href="#">Detalhes</a>
             </div>
         </div>

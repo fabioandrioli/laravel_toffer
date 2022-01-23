@@ -5,7 +5,6 @@
         ClientController,
     };
     
-
     Route::get('/dataClient', [ClientController::class, 'index'])->name('dataClient');
     Route::get('/editClient', [ClientController::class, 'editClient'])->name('editClient');
     Route::post('/updateClient', [ClientController::class, 'updateClient'])->name('update_client');

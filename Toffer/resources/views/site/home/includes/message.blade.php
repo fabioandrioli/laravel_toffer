@@ -4,15 +4,16 @@
             <p>{{$error}}</p>
         @endforeach
     </div>
+    @php session()->forget('errors'); @endphp
 @endif
-
 
 @if(session('message'))
     <div style="width:100%;margin-top:20px;" class="alert alert-success">
         {{session('message')}}
-        @php session()->forget('message');; @endphp
+        @php session()->forget('message'); @endphp
     </div>
 @endif
+
 
 @push('scripts')
     <script>
@@ -21,7 +22,7 @@
                 let divClassMessageAlert = document.querySelector(".alert");
                 setTimeout(function() { 
                     divClassMessageAlert.style.display = "none"
-                }, 3000);
+                }, 5000);
             }
         }
         messageTimeOut();

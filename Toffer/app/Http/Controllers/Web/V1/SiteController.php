@@ -12,14 +12,17 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\Doubt;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Order;
 use Mail;
+use App\Models\User;
 use App\Mail\ContactMail;
 use App\Mail\SendPasswordCreateUser;
 use App\Mail\ForgetPasswordMail;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 use  MercadoPago\SDK;
 use MercadoPago;
@@ -38,6 +41,53 @@ class SiteController extends Controller
         
        return view('site.home.index',compact('products'));
     }
+
+
+    public function form(){
+       
+        return view("site.home.create");
+    }
+
+    public function create(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|min:4,max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|confirmed|min:6',
+        ], [
+            'required' => 'O campo :attribute é obrigatório',
+            'email' => "Por favor informe um :attribute válido!",
+            "unique" => "Este :attribute já foi cadastrado",
+            "confirmed" => "Por favor confirme sua :attribute",
+            "name.min" => "o campo :attribute deve possuir mais de 4 caracteres",
+            "password.min" => "o campo :attribute deve possuir mais de 6 caracteres",
+        ], [
+            'name'      => 'Nome',
+            'email'     => 'E-mail',
+            'password'  => 'Senha',
+        ]); 
+
+        session(['errors' => $validator->errors()]);
+
+
+        if ($validator->fails()) {
+            return redirect()
+            ->back()
+            ->withInput();
+        }
+
+        $data = $request->all();
+        User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'phone' => $data['phone'],
+        ]);
+
+        session(['message' => 'Sua conta foi criada com sucesso!']);
+        return redirect()->route("login");
+    }
+
 
     public function search(Request $request){
         $filters = $request->except('_token');

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 
+
 class ClientController extends Controller
 {
 
@@ -27,6 +28,7 @@ class ClientController extends Controller
         return view("dashboard.client.index",compact("user"));
     }
 
+  
 
     public function editClient(){
       
