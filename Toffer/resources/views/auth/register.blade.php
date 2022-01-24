@@ -11,9 +11,6 @@
 
                 @include('site.home.includes.message')
 
-                @error('password')
-                    <div class="alert alert-danger">A senha é invalida</div>
-                @enderror
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('client.register') }}">

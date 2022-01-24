@@ -1,8 +1,14 @@
-@if($errors->any())
+
+
+@if(session('errors'))
     <div class="alert alert-warning">
-        @foreach($errors->all() as $error)
-            <p>{{$error}}</p>
+        @php $errors = session('errors')->messages(); @endphp
+        @foreach ($errors as $error )
+            @foreach ($error as $message)
+                {{$message}}<br>
+            @endforeach
         @endforeach
+     
     </div>
     @php session()->forget('errors'); @endphp
 @endif

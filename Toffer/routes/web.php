@@ -35,17 +35,18 @@ Route::get('/welcome',function(){
     return view('auth.registerTowTest');
 });
 
-Auth::routes(['verify' => true]);
+
+Auth::routes(['register' => false]);
 // Authentication Routes...
-// Route::get('login', [
-//     'as' => 'login',
-//     'uses' => 'Auth\LoginController@showLoginForm'
-//   ])->name('site.login');
-//   Route::post('login', [
-//     'as' => '',
-//     'uses' => 'Auth\LoginController@login'
-//   ])->name('site.login');
-//   Route::get('logout', [
-//     'as' => 'logout',
-//     'uses' => 'Auth\LoginController@logout'
-//   ]);
+Route::get('login', [
+    'as' => 'login',
+    'uses' => 'Auth\LoginController@showLoginForm'
+  ])->name('site.login');
+  Route::post('login', [
+    'as' => '',
+    'uses' => 'Auth\LoginController@login'
+  ])->name('site.login');
+  Route::get('logout', [
+    'as' => 'logout',
+    'uses' => 'Auth\LoginController@logout'
+  ]);
