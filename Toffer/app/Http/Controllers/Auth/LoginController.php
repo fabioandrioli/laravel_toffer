@@ -42,25 +42,6 @@ class LoginController extends Controller
     }
 
     public function login(Request $request){
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
-        ], [
-            'required' => 'O campo :attribute é obrigatório',
-            'email' => "Por favor informe um :attribute válido!",
-         
-        ], [
-            'email'    => 'E-mail',
-
-        ]); 
-
-        session(['errors' => $validator->errors()]);
-
-
-        if ($validator->fails()) {
-            return redirect()
-            ->back()
-            ->withInput();
-        }
 
         if($request->input('remember') == 1)
             $remember = true;
@@ -70,7 +51,7 @@ class LoginController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password],$remember)){
             return redirect()->intended('guest');
         }else{
-            session(['errors' => 'email ou senha incorretos!']);
+            session(['credentials' => 'email ou senha incorretos!']);
             return redirect()
             ->back()
             ->withInput();

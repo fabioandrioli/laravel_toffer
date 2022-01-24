@@ -38,15 +38,8 @@ Route::get('/welcome',function(){
 
 Auth::routes(['register' => false]);
 // Authentication Routes...
-Route::get('login', [
-    'as' => 'login',
-    'uses' => 'Auth\LoginController@showLoginForm'
-  ])->name('site.login');
+
   Route::post('login', [
     'as' => '',
     'uses' => 'Auth\LoginController@login'
   ])->name('site.login');
-  Route::get('logout', [
-    'as' => 'logout',
-    'uses' => 'Auth\LoginController@logout'
-  ]);

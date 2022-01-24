@@ -2,15 +2,21 @@
 
 @if(session('errors'))
     <div class="alert alert-warning">
-        @php $errors = session('errors')->messages(); @endphp
-        @foreach ($errors as $error )
+        @foreach (session('errors')->messages() as $error )
             @foreach ($error as $message)
                 {{$message}}<br>
             @endforeach
         @endforeach
-     
     </div>
     @php session()->forget('errors'); @endphp
+@endif
+
+
+@if(session('credentials'))
+    <div class="alert alert-warning">
+        {{session('credentials')}}<br>
+    </div>
+    @php session()->forget('credentials'); @endphp
 @endif
 
 @if(session('message'))
