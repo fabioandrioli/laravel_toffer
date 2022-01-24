@@ -36,7 +36,7 @@ Route::get('/welcome',function(){
 });
 
 
-Auth::routes(['register' => false]);
+Auth::routes(['register' => false,'verify' => true]);
 // Authentication Routes...
 
   Route::post('login', [
