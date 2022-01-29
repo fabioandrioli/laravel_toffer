@@ -13,12 +13,12 @@
                         @csrf
                        <div class="inputs">
                         <label for="name" class="register__text">Nome do produto</label>
-                        <input id="name" value="Relógio vipe" name="title" type="text" placeholder="Nome do produto" class="form-control" required autocomplete="name" autofocus>
+                        <input id="name"  name="title" type="text" placeholder="Nome do produto" class="form-control" required autocomplete="name" autofocus>
                        </div>
 
                        <div class="inputs">
                             <label for="summary-ckeditor" class="register__text">Descrição do produto</label>
-                            <textarea class="form-control"  name="description">asdasdas</textarea>
+                            <textarea class="form-control"  name="description"></textarea>
                             {{-- <textarea class="form-control" id="summary-ckeditor" name="description">asdasdas</textarea> --}}
                        </div>
 
@@ -39,7 +39,7 @@
 
                         <div class="inputs">
                             <label for="price" class="register__text">Preço</label>
-                            <input value="3200" class="form-control" placeholder="R$ 00.00,00" type="number" id="price" name="unit_price">
+                            <input  class="form-control" placeholder="R$ 00.00,00" type="number" id="price" name="unit_price">
                        </div>
 
                        <div class="inputs">
@@ -53,24 +53,24 @@
                         <div class="inputs">
                             <label for="exampleFormControlSelect3">Status</label>
                             <select name="type" class="form-control" id="exampleFormControlSelect3">
-                                <option value="unidade" selected>Ativo</option>
-                                <option value="kg">Inativo</option>
+                                <option value="ativo" selected>Ativo</option>
+                                <option value="inativo">Inativo</option>
                             </select>
                         </div>
 
                         <div class="inputs">
                             <label for="qtd" class="register__text">Quantidade</label>
-                            <input value="30" class="form-control" placeholder="Quantidade" type="number" id="qtd" name="qtd">
+                            <input  class="form-control" placeholder="Quantidade" type="number" id="qtd" name="qtd">
                         </div>
 
                         <div class="inputs">
                             <label for="discount" class="register__text">Desconto</label>
-                            <input value="30" class="form-control" placeholder="Desconto" type="number" id="discount" name="discount">
+                            <input  class="form-control" placeholder="Desconto" type="number" id="discount" name="discount">
                         </div>
 
                         <div class="inputs">
                             <label for="observacao" class="register__text" style="color:rgb(128, 35, 35)">Observação</label>
-                            <input value="Testando o cadastro do produto" class="form-control" placeholder="Observação" type="text" id="observacao" name="observacao">
+                            <input class="form-control" placeholder="Observação" type="text" id="observacao" name="observacao">
                         </div>
 
 
