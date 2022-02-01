@@ -39,13 +39,12 @@ class AuthServiceProvider extends ServiceProvider
             ->line('Se você não criou nenhuma conta, nenhuma ação é requerida');
         });
 
-        ResetPassword::toMailUsing(function($notifiable,$url){
+        ResetPassword::toMailUsing(function($notifiable,$token){
             return (new MailMessage)
-            ->subject('Alterar Senha - EspecializaTi Academy')
+            ->subject('Alterar Senha - Zoffer')
             ->line('Você está recebendo este e-mail porque recebemos um pedido de redefinição de senha para sua conta.')
-            ->action('Resetar Senha', url(config('app.url').route('password.reset', $notifiable, false)))
+            ->action('Resetar Senha', url(config('app.url').route('password.reset', [$token, 'email' => $notifiable->getEmailForPasswordReset()], false)))
             ->line('Se você não solicitou uma alteração da senha, nenhuma ação adicional é necessária.');
-    
         });
 
         // $roles = Role::all();
