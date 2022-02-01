@@ -41,10 +41,11 @@ class AuthServiceProvider extends ServiceProvider
 
         ResetPassword::toMailUsing(function($notifiable,$url){
             return (new MailMessage)
-            ->subject('Notificação de resete de senha')
-            ->line('Se voce está recebendo este email, é por que foi pedido um resete de senha para sua conta')
-            ->action('Este link vai expirar em :count',['count' => config('auth.passwords'.config('auth.defaults.passwords').'.expire')])
-            ->line('Se você não requisitou o resete, ignore esta mensagem.');
+            ->subject('Alterar Senha - EspecializaTi Academy')
+            ->line('Você está recebendo este e-mail porque recebemos um pedido de redefinição de senha para sua conta.')
+            ->action('Resetar Senha', url(config('app.url').route('password.reset', $notifiable, false)))
+            ->line('Se você não solicitou uma alteração da senha, nenhuma ação adicional é necessária.');
+    
         });
 
         // $roles = Role::all();
